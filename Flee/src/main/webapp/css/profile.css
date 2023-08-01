@@ -1,0 +1,831 @@
+@import url(default.css);
+
+@import url(common.css);
+
+@import url(contents.css);
+
+@import url(sub.css);
+
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+#profile .card1 i.grade1 {
+	color: #74b76e;
+	cursor: pointer;
+	padding-left: 3px;
+}
+
+#profile .card1 i.grade2 {
+	color: #478BE1;
+	cursor: pointer;
+	padding-left: 3px;
+}
+
+#profile .card1 i.grade3 {
+	color: #e3983e;
+	cursor: pointer;
+	padding-left: 3px;
+}
+
+#mypage .card1 i.grade1 {
+	color: #74b76e;
+	cursor: pointer;
+	padding-left: 3px;
+}
+
+#mypage .card1 i.grade2 {
+	color: #478BE1;
+	cursor: pointer;
+	padding-left: 3px;
+}
+
+#mypage .card1 i.grade3 {
+	color: #e3983e;
+	cursor: pointer;
+	padding-left: 3px;
+}
+/* 프로필카드 */
+#profile {
+	margin-top: 80px;
+}
+
+#profile .m_card {
+	text-align: center;
+	width: 600px;
+	height: 240px;
+	margin: 0 auto;
+	background: rgb(226, 226, 226);
+}
+
+#profile .m_card .p_img {
+	float: left;
+	margin: 40px 20px;
+	border-radius: 100px;
+	width: 70px;
+	height: 70px;
+}
+
+#profile .m_card .card1 {
+	float: left;
+	padding: 40px 20px;
+	text-align: left;
+}
+
+#profile .m_card .card1 .p_name {
+	font-weight: 500;
+}
+
+#profile .m_card .card1 span {
+	display: block;
+}
+
+#profile .m_card .card1 a {
+	padding-top: 88px;
+	font-size: 14px;
+	display: inline-block;
+}
+
+#profile .m_card .card1 button {
+	padding-top: 88px;
+	font-size: 14px;
+	display: inline-block;
+}
+
+#profile .m_card .card1 button {
+	bottom: 30px;
+	font-size: 14px;
+	display: inline-block;
+}
+
+#profile .m_card .card2 {
+	float: left;
+	margin: 20px 10px;
+	background: #fff;
+	width: 290px;
+	height: 200px;
+	text-align: left;
+}
+
+#profile .m_card .card2 h4 {
+	padding: 30px 20px;
+	font-size: 14px;
+}
+
+#profile .m_card .card2 .shortbox {
+	min-height: 60px;
+}
+
+#profile .m_card .card2  p {
+	padding: 10px 20px;
+	font-size: 14px;
+}
+
+#profile .m_card .card2 a {
+	font-size: 14px;
+	float: right;
+	padding: 20px 20px;
+}
+
+#profile .m_long {
+	width: 600px;
+	height: 430px;
+	margin: 0 auto;
+	padding-top: 10px;
+	text-align: left;
+	border-bottom: 1px solid #487BE1;
+}
+
+#profile .m_long .mytext {
+	margin-top: 30px;
+	text-align: left;
+	min-height: 400px;
+	width: 600px;
+	word-break: break-all;
+}
+
+#profile .m_long .mytext h2 {
+	font-weight: 400;
+	padding-bottom: 60px;
+}
+
+#profile .m_long .mytext h3 {
+	padding: 30px 0;
+}
+
+#profile .m_long .mytext p.myh {
+	margin-top: 20px;
+	white-space: normal;
+	margin-bottom: 40px;
+}
+
+#profile .m_long .myt {
+	width: 100%;
+	margin-top: 30px;
+	float: left;
+	margin-bottom: 40px;
+	height: 105px;
+	border-bottom: 1px solid #487BE1;
+}
+
+#profile .m_long .myt ul li {
+	float: left;
+	padding: 0px 6px;
+}
+
+#profile .m_long .myt h4 {
+	margin-top: 40px;
+	margin-bottom: 50px;
+	padding: 0px 10px;
+	font-weight: 400;
+}
+
+#profile .m_long .myt .cspan {
+	border: 1px solid #487BE1;
+	color: #487BE1;
+	border-radius: 100px;
+	background: #fff;
+	padding: 2px 15px;
+	width: auto;
+}
+
+#profile .m_review {
+	width: 600px;
+	height: 500px;
+	margin: 0 auto;
+	padding: 10px 0 90px 0;
+	text-align: left;
+}
+
+#profile .m_review .m_reviewpro {
+	margin-bottom: 100px;
+	width: 100%;
+	height: auto;
+	float: left;
+	min-height: 500px;
+}
+
+#profile .m_review .m_reviewpro {
+	max-height: 790px;
+	overflow: scroll;
+}
+
+#profile .m_review .m_reviewpro::-webkit-scrollbar {
+	background-color: #fff;
+	width: 1rem;
+}
+
+#profile .m_review .m_reviewpro::-webkit-scrollbar-track {
+	background-color: #fff;
+}
+
+#profile .m_review .m_reviewpro::-webkit-scrollbar-thumb {
+	height: 15%;
+	background-color: #babac0;
+	border-radius: 1rem;
+	border: 4px solid #fff;
+}
+
+#profile .m_review .m_aboutr {
+	
+}
+
+#profile .m_review .m_aboutr ul li {
+	float: left;
+	font-weight: 400;
+}
+
+#profile .m_review .m_aboutr ul li h3 {
+	font-size: 19px;
+}
+
+#profile .m_review .m_reviewpro li.rlist {
+	height: 236px;
+	display: block;
+	width: 100%;
+	margin-top: 20px;
+	background: #ECF1FC;
+	border-bottom: 2px solid #fff;
+	border-radius: 10px;
+}
+
+#profile .m_review .m_reviewpro .rlist {
+	float: left;
+}
+
+#profile .m_review .m_reviewpro .rlist .rlistone {
+	padding: 10px;
+}
+
+#profile .m_review .m_reviewpro .rlist .rlistone .r_img {
+	border-radius: 100px;
+	width: 100px;
+	height: 100px;
+}
+
+#profile .m_review .m_reviewpro .rlist .rlistone a {
+	
+}
+
+#profile .m_review .m_reviewpro .rlist .rlistone img.r_img {
+	float: left;
+	margin: 40px 20px;
+}
+
+#profile .m_review .m_reviewpro .rlist .rlisttwo {
+	
+}
+
+#profile .m_review .m_reviewpro .rlist .rlisttwo h3 {
+	padding: 0 0 7px 0;
+	font-size: 19px;
+	font-weight: 500;
+	display: inline-block;
+}
+
+#profile .m_review .m_reviewpro .rlist .rlisttwo .rgrade {
+	float: right;
+	display: block;
+	margin-right: 43px;
+	color: #d49c04;
+}
+
+#profile .m_review .m_reviewpro .rlist .rlisttwo .rcon {
+	display: block;
+	min-height: 137px;
+	right: 30px;
+	width: 95%;
+	word-break: break-all;
+	font-size: 15px;
+}
+
+#profile .m_review .m_reviewpro .rlist .rlisttwo .rdate {
+	float: right;
+	margin-right: 43px;
+	font-size: 16px;
+	font-weight: 200;
+	display: block;
+}
+
+#profileupdate {
+	margin-top: 150px;
+	text-align: left;
+}
+
+#profileupdate h3 {
+	margin: 30px 20px;
+}
+
+#profileupdate .m_upcard {
+	width: 100%;
+	min-height: 500px;
+	margin: 0 auto;
+	padding-bottom: 50px;
+}
+
+#profileupdate .m_upcard .p_img {
+	float: left;
+	padding: 40px 30px;
+	width: 14%;
+}
+
+#profileupdate .m_upcard .card1 {
+	float: left;
+	padding: 40px 20px 0px 0px;
+	text-align: left;
+	max-height: 310px;
+	width: 72%;
+}
+
+#profileupdate .m_upcard .card1 input {
+	width: 500px;
+	background: rgb(208, 208, 208);
+	border-radius: 3px 3px;
+	border-style: none;
+}
+
+#profileupdate .m_upcard .card1 .removebtn {
+	margin-top: 40px;
+	margin-left: 20px;
+	background: #487BE1;
+	width: 150px;
+	padding: 2px 17px;
+	border: 1px solid #487BE1;
+	border-radius: 100px;
+	color: #fff;
+	font-size: 15px;
+}
+
+#profileupdate .m_upcard .card1 input p {
+	font-size: 14px;
+}
+
+#profileupdate .m_upcard .card2 .yub {
+	float: left;
+	padding-right: 40px;
+}
+
+#profileupdate .m_upcard .card2 img#prtview {
+	width: 400px;
+}
+
+#profileupdate .m_upcard .card2 {
+	width: 100%;
+	display: inline-block;
+	padding: 20px 30px;
+	border-bottom: 1px solid #9d9d9d;
+	min-height: 300px;
+}
+
+#profileupdate .m_updateshort {
+	width: 100%;
+	height: 400px;
+	margin: 0 auto;
+	margin-top: 20px;
+	/* 	border-top: 1px solid #8d8d8d; */
+	padding-top: 50px;
+}
+
+#profileupdate .m_updateshort .up_left {
+	float: left;
+	padding: 20px 5px;
+	width: 20%;
+}
+
+#profileupdate .m_updateshort .up_left h3 {
+	margin: 0 0 0 10px;
+}
+
+#profileupdate .m_updateshort .up_left p {
+	margin: 0 0 0 10px;
+}
+
+#profileupdate .m_updateshort .updateright {
+	float: left;
+	width: 70%;
+	padding-top: 20px;
+}
+
+#profileupdate .m_updateshort .updateright .textarea {
+	width: 100%;
+}
+
+#profileupdate .m_updatelong {
+	border-top: 1px solid #8d8d8d;
+	width: 100%;
+	height: 400px;
+	margin: 0 auto;
+	margin-top: 20px;
+	padding-top: 50px;
+}
+
+#profileupdate .m_updatelong .up_left {
+	float: left;
+	padding: 20px 5px;
+	width: 20%;
+}
+
+#profileupdate .m_updatelong .up_left h3 {
+	margin: 0 0 0 10px;
+}
+
+#profileupdate .m_updatelong .up_left p {
+	margin: 0 0 0 10px;
+}
+
+#profileupdate .m_updatelong .updateright {
+	float: left;
+	width: 70%;
+	padding-top: 20px;
+}
+
+#profileupdate .m_updatelong .updateright .textarea {
+	width: 100%;
+}
+
+#profileupdate .updatebtn {
+	text-align: center;
+}
+
+#profileupdate .updatebtn .probtn {
+	width: 120px;
+	height: 30px;
+	border: 1px solid #487BE1;
+	padding: 0 15px;
+	border-radius: 100px;
+	background: #487BE1;
+	color: #fff;
+	margin-top: 50px;
+}
+
+#profileupdate .updatebtn .canclepro {
+	width: 120px;
+	height: 30px;
+	border: 1px solid #487BE1;
+	padding: 0 15px;
+	border-radius: 100px;
+	background: #fff;
+	color: #487BE1;
+	margin-top: 50px;
+}
+
+@media screen and (max-width:640px) {
+	#profileupdate {
+		margin-top: 100px
+	}
+	#profileupdate h3 {
+		margin: 10px 30px;
+	}
+	#profileupdate .m_upcard {
+		width: 100%;
+		min-height: 500px;
+		margin: 0 auto;
+		padding-bottom: 0px;
+	}
+	#profileupdate .m_upcard .p_img {
+		float: left;
+		padding: 20px 30px;
+		width: 40%;
+	}
+	#profileupdate .m_upcard .card1 {
+		float: left;
+		padding: 40px 20px 0px 0px;
+		max-height: 310px;
+		width: 72%;
+		margin-left: 20px;
+	}
+	#profileupdate .m_upcard .card1 input {
+		width: 100%;
+	}
+	#profileupdate .m_upcard .card1 .removebtn {
+		margin-left: 0px
+	}
+	#profileupdate .m_upcard .card2 {
+		width: 90%;
+		display: inline-block;
+		padding: 20px 30px;
+		border-bottom: 1px solid #9d9d9d;
+		min-height: 200px;
+	}
+	#profileupdate .m_upcard .card2 .yub {
+		float: none;
+		padding-right: 40px;
+		margin-bottom: 10px;
+	}
+	#profileupdate .m_upcard .card2 .yub #preview {
+		width: 50%
+	}
+	#profileupdate .m_updateshort .up_left {
+		float: left;
+		padding: 20px 5px;
+		width: 27%;
+	}
+	#profileupdate .m_updateshort {
+		width: 100%;
+		height: 320px;
+		margin: 0 auto;
+		margin-top: 0px;
+		border-top: none;
+		padding-top: 0px;
+	}
+	#profileupdate .m_updateshort .updateright {
+		float: none;
+		width: 70%;
+		padding-top: 20px;
+	}
+	#profileupdate .m_updateshort .updateright textarea {
+		width: 130%;
+		margin-left: 20px;
+	}
+	#profileupdate .m_updatelong {
+		border-top: 1px solid #8d8d8d;
+		width: 100%;
+		height: 400px;
+		margin: 0 auto;
+		margin-top: 20px;
+		padding-top: 0px;
+	}
+	#profileupdate .m_updatelong .up_left {
+		float: left;
+		padding: 20px 5px;
+		width: 29%;
+	}
+	#profileupdate .m_updatelong .updateright {
+		float: none;
+		width: 70%;
+		padding-top: 20px;
+	}
+	#profileupdate .m_updatelong .updateright textarea {
+		width: 130%;
+		margin-left: 20px;
+		height: 300px;
+	}
+}
+
+/*마이페이지*/
+#mypage {
+	margin-top: 80px;
+}
+
+#mypage .m_card {
+	text-align: center;
+	width: 600px;
+	height: 240px;
+	margin: 0 auto;
+	background: rgb(226, 226, 226);
+}
+
+#mypage .m_card .p_img {
+	float: left;
+	margin: 40px 20px;
+	border-radius: 100px;
+	width: 70px;
+	height: 70px;
+}
+
+#mypage .m_card .card1 {
+	float: left;
+	padding: 40px 20px;
+	text-align: left;
+}
+
+#mypage .m_card .card1 .p_name {
+	font-weight: 500;
+}
+
+#mypage .m_card .card1 span {
+	display: block;
+}
+
+#mypage .m_card .card1 a {
+	padding-top: 88px;
+	font-size: 14px;
+	display: inline-block;
+	color: #3d3d3d;
+	text-decoration: none;
+}
+
+#mypage .m_card .card2 {
+	float: left;
+	margin: 20px 10px;
+	background: #fff;
+	width: 290px;
+	height: 200px;
+	text-align: left;
+}
+
+#mypage .m_card .card2 h4 {
+	padding: 30px 20px;
+	font-size: 14px;
+}
+
+#mypage .m_card .card2 .shortbox {
+	min-height: 60px;
+}
+
+#mypage .m_card .card2  p {
+	padding: 10px 20px;
+	font-size: 14px;
+}
+
+#mypage .m_card .card2 a {
+	font-size: 14px;
+	float: right;
+	padding: 20px 20px;
+	color: #3d3d3d;
+	text-decoration: none;
+}
+
+#mypage .mypagenave {
+	width: 600px;
+	height: 500px;
+	padding-top: 10px;
+	text-align: center;
+	margin: 0 auto;
+}
+
+#mypage .mypagenave .mytext {
+	margin-top: 50px;
+}
+
+#mypage .mypagenave .mytext h2 {
+	font-weight: 500;
+}
+
+#mypage .mypagenave .mytext ul.ulcenter {
+	width: 600px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#mypage .mypagenave .mytext ul.ulcenter li {
+	padding: 20px 10px;
+	display: block;
+}
+
+#mypage .mypagenave .mytext ul.ulcenter li a {
+	text-decoration: none;
+	color: #2d2d2d;
+}
+
+#mypage .mypagenave .mytext ul.ulcenter li a:hover {
+	color: #547ada;
+}
+
+/*신고하기*/
+#modal.modal-overlay {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 100;
+	display: none;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+#modal .modal-window {
+	background: #FFF;
+	backdrop-filter: blur(13.5px);
+	-webkit-backdrop-filter: blur(13.5px);
+	border-radius: 10px;
+	border: 1px solid #9d9d9d;
+	width: 500px;
+	height: 400px;
+	position: relative;
+	top: -100px;
+	padding: 10px;
+	text-align: left;
+}
+
+#modal .title {
+	margin-top: 50px;
+	padding-left: 10px;
+	display: inline;
+	color: #5d5d5d;
+}
+
+#modal .title h3 {
+	display: inline;
+}
+
+#modal .title p {
+	padding-left: 10px;
+	font-size: 15px
+}
+
+#modal .close-area {
+	display: inline;
+	float: right;
+	padding-right: 10px;
+	cursor: pointer;
+	color: #2d2d2d;
+	font-size: 19px;
+}
+
+#modal .content {
+	margin-top: 40px;
+	padding: 0px 10px;
+	color: white;
+}
+
+#modal .content ul {
+	text-align: center;
+}
+
+#modal .content ul li.off {
+	width: 88%;
+	height: 20px;
+	padding: 5px 10px;
+	border-radius: 100px;
+	border: 1px solid #a7b5d8;
+	margin: 20px;
+}
+
+#modal .content ul li.on {
+	width: 88%;
+	height: 20px;
+	padding: 5px 10px;
+	border-radius: 100px;
+	border: 1px solid #487BE1;
+	background: #487BE1;
+	margin: 20px;
+	color: #fff
+}
+
+#modal .content ul li.on a {
+	color: #fff
+}
+
+#modal .content ul li a {
+	text-decoration: none;
+	color: #3d3d3d;
+}
+
+#modal .content p {
+	color: #3d3d3d;
+	font-size: 15px;
+}
+
+#modal .modal-window .modalbtn {
+	margin: 0 auto;
+	display: block;
+	width: 120px;
+	height: 30px;
+	border: 1px solid #487BE1;
+	padding: 0 15px;
+	border-radius: 100px;
+	background: #487BE1;
+	color: #fff;
+	margin-top: 50px;
+}
+
+/*모바일*/
+@media screen and (max-width:640px) {
+	#mypage {
+		margin-top: 30px;
+	}
+	#mypage .m_card {
+		width: 100%
+	}
+	#mypage .m_card .p_img {
+		margin: 40px 15px;
+	}
+	#mypage .m_card .card2 {
+		width: 43%;
+	}
+	#mypage .mypagenave {
+		width: 100%
+	}
+	#mypage .mypagenave .mytext {
+		margin-top: 5px;
+	}
+	#mypage .mypagenave .mytext ul.ulcenter {
+		width: 100%;
+	}
+}
+
+@media screen and (max-width:640px) {
+	#profile {
+		margin-top: 30px;
+	}
+	#profile .m_card {
+		width: 100%
+	}
+	#profile .m_card .p_img {
+		margin: 40px 15px;
+	}
+	#profile .m_card .card2 {
+		width: 43%;
+	}
+	#profile .m_long {
+		width: 100%
+	}
+	#profile .m_long .mytext {
+		width: 100%
+	}
+	#profile .m_review {
+		width: 100%
+	}
+}

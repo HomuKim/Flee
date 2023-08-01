@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="myText">
+
+	<!-- 리뷰리스트 -->
+	<select id="getMyReview" parameterType="String"
+		resultType="hashmap">
+		<include refid="common.pagingPre" />
+		SELECT ROW_NUMBER() OVER(ORDER BY R_DATE) RNUM,
+		R_DATE,R_GRADE,R_CONTENT, R_IDX, R_NICKNAME
+		FROM REVIEW
+		WHERE
+		RE_NICKNAME=#{M_NICKNAME}
+		) AA
+		) AAA
+		WHERE
+		AAA.RNUM BETWEEN #{RSTART} AND #{REND}
+	</select>
+
+	<!-- 커뮤니티리스트 -->
+	<select id="getMyCommunity" parameterType="hashmap"
+		resultType="hashmap">
+		<include refid="common.pagingPre" />
+		SELECT
+		ROW_NUMBER() OVER(ORDER BY C_DATE DESC) RNUM,
+		C_IDX,
+		C_TITLE,
+		C_DATE,
+		C_NICKNAME,
+		C_COUNT,
+		C_CONTENT,
+		C_TYPE
+		FROM
+		COMMUNITY
+		WHERE
+		C_NICKNAME=#{M_NICKNAME}
+		) AA
+		) AAA
+		WHERE
+		AAA.RNUM BETWEEN #{CSTART} AND
+		#{CEND}
+	</select>
+
+	<select id="getMyQna" parameterType="hashmap"
+		resultType="hashmap">
+		<include refid="common.pagingPre" />
+		SELECT
+		ROW_NUMBER() OVER(ORDER BY N_DATE DESC) RNUM,
+		N.*,
+		COUNT(NC.NCOM_IDX) OVER (PARTITION BY NC.N_IDX) AS COUNT
+		FROM
+		NOTICE N, N_COMMENT NC
+		WHERE
+		N.N_IDX=NC.N_IDX(+) AND N.N_NICKNAME=#{M_NICKNAME}
+		) AA
+		) AAA
+		WHERE
+		AAA.RNUM BETWEEN #{QSTART} AND #{QEND}
+	</select>
+
+
+
+</mapper>

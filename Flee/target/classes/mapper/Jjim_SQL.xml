@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jjim">
+
+	<select id="getJjimList" parameterType="hashmap"
+		resultType="hashmap">
+		<include refid="common.pagingPre" />
+		SELECT ROW_NUMBER() OVER(ORDER BY P_ID DESC) RNUM, P_ID, P_TITLE,
+		P_NICKNAME,
+		P_IMAGE, j.* FROM PRODUCT p, JJIM j WHERE p.P_ID=j.JP_ID AND J_NICKNAME = #{M_NICKNAME}
+		<include refid="common.pagingPost" />
+	</select>
+
+	<select id="getProductJjimList" parameterType="hashmap"
+		resultType="hashmap">
+		SELECT *
+		FROM JJIM
+		WHERE
+		J_NICKNAME = #{M_NICKNAME} AND JP_ID = #{P_ID}
+	</select>
+
+	<insert id="writeJjim" parameterType="hashmap">
+		INSERT INTO JJIM VALUES
+		(J_IDX_SEQ.NEXTVAL, #{P_ID},
+		SYSDATE,#{J_NICKNAME})
+		<selectKey keyProperty="J_IDX" resultType="Long"
+			order="AFTER">
+			SELECT J_IDX_SEQ.CURRVAL FROM DUAL
+		</selectKey>
+	</insert>
+
+	<delete id="deleteJjim" parameterType="hashmap">
+		DELETE FROM JJIM WHERE
+		J_IDX=#{J_IDX}
+	</delete>
+
+</mapper>

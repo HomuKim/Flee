@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+
+	<!-- getMemberEmail(이메일 중복확인, 로그인 기능, 회원정보수정폼) -->
+	<select id="getMember" parameterType="hashmap"
+		resultType="hashmap">
+<![CDATA[
+	SELECT * 
+	FROM 
+		MEMBER
+ 	WHERE 
+ 		EMAIL= #{EMAIL} 
+]]>
+	</select>
+	
+	<select id="getMemberByNickname" parameterType="hashmap"
+		resultType="hashmap">
+<![CDATA[
+	SELECT * 
+	FROM 
+		MEMBER
+ 	WHERE 
+ 		M_NICKNAME=#{M_NICKNAME} 
+]]>
+	</select>
+
+	<!-- getCategory -->
+	<select id="getCategory" parameterType="hashmap"
+		resultType="hashmap">
+<![CDATA[
+	SELECT * 
+	FROM 
+		CATEGORY
+ 	WHERE 
+ 		CAT_NICKNAME= #{M_NICKNAME} 
+]]>
+	</select>
+
+	<!-- emailCheck -->
+	<select id="emailCheck" parameterType="String" resultType="int">
+<![CDATA[
+	SELECT COUNT(*) 
+	FROM 
+		MEMBER
+ 	WHERE 
+ 		EMAIL= #{EMAIL} 
+]]>
+	</select>
+
+	<!-- nickCheck -->
+	<select id="nickCheck" parameterType="String" resultType="int">
+<![CDATA[
+	SELECT COUNT(*) 
+	FROM 
+		MEMBER
+ 	WHERE 
+ 		M_NICKNAME= #{M_NICKNAME} 
+]]>
+	</select>
+
+	<!-- findEmail(가입 이메일 찾기 결과) -->
+	<select id="findEmail" parameterType="hashmap"
+		resultType="hashmap">
+<![CDATA[
+	SELECT * 
+	FROM 
+		MEMBER
+	WHERE 
+		NAME=#{NAME} AND JUMIN1=#{JUMIN1} AND JUMIN2=#{JUMIN2}
+]]>
+	</select>
+
+
+	<!-- findPassword(비밀번호 찾기 결과) -->
+	<select id="findPassword" parameterType="hashmap"
+		resultType="hashmap">
+<![CDATA[
+	SELECT * 
+	FROM 
+		MEMBER
+	WHERE 
+		EMAIL=#{EMAIL} AND NAME=#{NAME} AND JUMIN1= #{JUMIN1} AND JUMIN2 = #{JUMIN2}
+]]>
+	</select>
+
+
+	<!-- memberListPaging(회원리스트 페이징→관리자) -->
+	<select id="memberListPaging" parameterType="hashmap"
+		resultType="hashmap">
+		<include refid="common.pagingPre" />
+		SELECT ROW_NUMBER() OVER(ORDER BY M_DATE) RNUM,
+		EMAIL, PASSWORD, NAME,
+		M_NICKNAME, JUMIN1, JUMIN2, M_DATE, ADDRESS1,
+		ADDRESS2, POSTCODE,
+		PHONE, RANK, BLOCK
+		FROM
+		MEMBER
+		<include refid="common.pagingPost" />
+	</select>
+
+
+	<!-- memberListSearchPaging(회원리스트 검색페이징) -->
+	<select id="memberListSearchPaging" parameterType="hashmap"
+		resultType="hashmap">
+		SELECT *
+		FROM (
+		SELECT EMAIL, PASSWORD, NAME, M_NICKNAME, JUMIN1,
+		JUMIN2, M_DATE,
+		ADDRESS1, ADDRESS2, POSTCODE, PHONE, RANK, BLOCK,
+		ROWNUM R
+		FROM (
+		SELECT
+		EMAIL, PASSWORD, NAME, M_NICKNAME, JUMIN1, JUMIN2,
+		M_DATE, ADDRESS1,
+		ADDRESS2, POSTCODE, PHONE, RANK, BLOCK
+		FROM
+		MEMBER
+		<where>
+			<if test="KEYWORD!=NULL">
+				<if test="CONDITION.equals('EMAIL')">
+					EMAIL LIKE '%'||#{KEYWORD}||'%'
+				</if>
+				<if test="CONDITION.equals('NAME')">
+					NAME LIKE '%'||#{KEYWORD}||'%'
+				</if>
+				<if test="CONDITION.equals('RANK')">
+					RANK LIKE '%'||#{KEYWORD}||'%'
+				</if>
+			</if>
+		</where>
+		ORDER BY M_DATE ASC
+		)
+		ORDER BY R
+		)
+		WHERE
+		R BETWEEN #{START} AND #{END}
+	</select>
+
+
+	<!-- memberCount(회원 수) -->
+	<select id="memberCount" resultType="hashmap">
+		SELECT
+		COUNT(*) COUNT
+		FROM
+		MEMBER
+	</select>
+
+
+	<!-- memberSearchCount(회원 수) -->
+	<select id="memberSearchCount" parameterType="hashmap"
+		resultType="hashmap">
+		SELECT
+		COUNT(*) COUNT
+		FROM
+		MEMBER
+		<where>
+			<if test="KEYWORD!=NULL">
+				<if test="CONDITION.equals('EMAIL')">
+					EMAIL LIKE '%'||#{KEYWORD}||'%'
+				</if>
+				<if test="CONDITION.equals('NAME')">
+					NAME LIKE '%'||#{KEYWORD}||'%'
+				</if>
+				<if test="CONDITION.equals('RANK')">
+					RANK LIKE '%'||#{KEYWORD}||'%'
+				</if>
+			</if>
+		</where>
+	</select>
+
+
+	<!-- insertMember(회원가입) -->
+	<insert id="insertMember" parameterType="hashmap">
+<![CDATA[
+	INSERT INTO 
+		MEMBER 
+		(EMAIL, PASSWORD, NAME, M_NICKNAME, JUMIN1, JUMIN2, M_DATE, ADDRESS1, ADDRESS2, POSTCODE, PHONE, RANK, BLOCK)
+	VALUES
+		( #{EMAIL}, 
+		#{PASSWORD}, 
+		#{NAME},
+		#{M_NICKNAME}, 
+		#{JUMIN1}, 
+		#{JUMIN2},
+		SYSDATE, 
+		#{ADDRESS1}, 
+		#{ADDRESS2}, 
+		#{POSTCODE}, 
+		#{PHONE}, 
+		'S',
+		'N') 
+	]]>
+	</insert>
+
+	<!-- insertMemberCategory(회원가입:카테고리) -->
+	<insert id="insertMemberCategory" parameterType="hashmap">
+<![CDATA[
+	INSERT INTO 
+		CATEGORY
+		(FASHION, BEAUTY, ELECTRONIC, DRAWING, WORKOUT, STUDY, FILM, ANIMAL, CAT_NICKNAME)
+	VALUES
+		( #{FASHION}, 
+		#{BEAUTY}, 
+		#{ELECTRONIC},
+		#{DRAWING}, 
+		#{WORKOUT}, 
+		#{STUDY},
+		#{FILM}, 
+		#{ANIMAL}, 
+		#{M_NICKNAME} )
+	]]>
+	</insert>
+
+
+	<!-- updateProfile(프로필입력/수정) -->
+	<update id="updateProfile" parameterType="hashmap">
+		UPDATE
+		MEMBER
+		SET
+		ABOUTME=#{ABOUTME},
+		L_ABOUTME=#{L_ABOUTME}
+		<if test="M_IMAGE!=null">
+			,M_IMAGE=#{M_IMAGE}
+		</if>
+		WHERE
+		EMAIL=#{EMAIL}
+
+	</update>
+
+
+	<!--updateMember(일반회원-회원정보수정) -->
+	<update id="updateMember" parameterType="hashmap">
+<![CDATA[
+	UPDATE 
+		MEMBER 
+	SET 
+		PASSWORD= #{PASSWORD}, 
+		ADDRESS1 = #{ADDRESS1}, 
+		ADDRESS2 = #{ADDRESS2}, 
+		POSTCODE = #{POSTCODE}, 
+		PHONE =#{PHONE}
+	WHERE 
+		EMAIL=#{EMAIL}
+]]>
+	</update>
+
+	<!--updateMember(일반회원-회원정보수정->카테고리수정) → -->
+	<update id="updateMemberCategory" parameterType="hashmap">
+<![CDATA[
+	UPDATE 
+		CATEGORY
+	SET 
+		FASHION=#{FASHION},
+		BEAUTY=#{BEAUTY},
+		ELECTRONIC=#{ELECTRONIC},
+		DRAWING=#{DRAWING},
+		WORKOUT=#{WORKOUT},
+		STUDY=#{STUDY},
+		FILM=#{FILM},
+		ANIMAL=#{ANIMAL}
+	WHERE 
+		CAT_NICKNAME=#{M_NICKNAME}
+]]>
+	</update>
+
+
+
+	<!--updateMemberAdmin(관리자-회원정보수정기능) → → 일반회원 수정과 동일 -->
+	<update id="updateMemberAdmin" parameterType="hashmap">
+<![CDATA[
+	UPDATE 
+		MEMBER
+	SET 
+		RANK = #{RANK}, 
+		BLOCK = #{BLOCK},
+		ADDRESS1 = #{ADDRESS1}, 
+		ADDRESS2 = #{ADDRESS2},
+		POSTCODE = #{POSTCODE}, 
+		PHONE =#{PHONE}, 
+	WHERE 
+		EMAIL=#{EMAIL}
+]]>
+	</update>
+
+
+	<!-- deleteMember(회원탈퇴기능) -->
+	<delete id="deleteMember" parameterType="hashmap">
+<![CDATA[
+	DELETE 
+	FROM 
+		MEMBER 
+	WHERE 
+		EMAIL = #{EMAIL}
+]]>
+	</delete>
+
+
+
+</mapper>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="community">
+
+	<sql id="criteria">
+		<trim prefix="WHERE" prefixOverrides="OR">
+			<foreach item='type' collection="typeArr">
+				<trim prefix="or">
+					<choose>
+						<when test="type=='T'.toString()">
+							C_TITLE like '%'||#{keyword}||'%'
+						</when>
+						<when test="type=='C'.toString()">
+							C_CONTENT like '%'||#{keyword}||'%'
+						</when>
+						<when test="type=='W'.toString()">
+							C_NICKNAME like '%'||#{keyword}||'%'
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
+
+	<select id="communityList" parameterType="hashmap"
+		resultType="hashmap">
+		<include refid="common.pagingPre" /> 
+		<![CDATA[
+	SELECT 
+	ROW_NUMBER() OVER(ORDER BY C_IDX DESC) RNUM,
+		C_IDX,
+		C_TITLE,
+		C_DATE,
+		C_NICKNAME,
+		C_COUNT,
+		C_CONTENT,
+		C_TYPE
+	FROM
+   		 COMMUNITY
+			]]>
+		<include refid="criteria"></include>
+		<include refid="common.pagingPost" />
+	</select>
+
+	<insert id="communityWrite" parameterType="hashmap"
+		useGeneratedKeys="true" keyProperty="C_IDX">
+		<selectKey keyProperty="C_IDX" resultType="string"
+			order="BEFORE">
+			SELECT C_IDX_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		<![CDATA[
+			INSERT INTO COMMUNITY
+			(
+		C_IDX,
+		C_TITLE,
+		C_DATE,
+		C_NICKNAME,
+		C_COUNT,
+		C_CONTENT,
+		C_TYPE
+			)
+			VALUES
+			(
+				#{C_IDX}, 
+				#{C_TITLE}, 
+				SYSDATE, 
+				#{C_NICKNAME}, 
+				0, 
+				#{C_CONTENT}, 
+				#{C_TYPE}
+			)
+		]]>
+	</insert>
+
+	<!-- 조회수 증가 -->
+	<update id="updateCcount" parameterType="hashmap">
+		<![CDATA[
+			UPDATE COMMUNITY 
+			SET
+				C_COUNT = NVL(C_COUNT, 0) + 1
+			WHERE
+				C_IDX = #{C_IDX}	
+		]]>
+	</update>
+
+
+	<select id="communityDetail" parameterType="hashmap"
+		resultType="hashmap">
+		<![CDATA[
+			SELECT
+				C_IDX,
+				C_TITLE,
+				C_DATE,
+				C_NICKNAME,
+				C_COUNT,
+				C_CONTENT,
+				C_TYPE
+			FROM
+				COMMUNITY
+			WHERE
+				C_IDX = #{C_IDX}		
+		]]>
+	</select>
+
+	<update id="communityUpdate" parameterType="hashmap">
+		<![CDATA[
+			UPDATE COMMUNITY 
+			SET
+				C_TITLE = #{C_TITLE},				
+				C_CONTENT = #{C_CONTENT},
+				C_TYPE = #{C_TYPE}
+			WHERE
+				C_IDX = #{C_IDX}	
+		]]>
+	</update>
+
+	<delete id="communityDelete" parameterType="hashmap">
+		<![CDATA[
+			DELETE FROM COMMUNITY
+			WHERE
+				C_IDX = #{C_IDX}	
+		]]>
+	</delete>
+
+</mapper>

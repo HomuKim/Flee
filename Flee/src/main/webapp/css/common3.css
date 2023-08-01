@@ -1,0 +1,97 @@
+@import url(default.css);
+@import url(common.css);
+
+@import url(sub.css);
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+#joinform{padding-top:200px;height: 1500px;}
+#joinform .joincon{width: 450px;text-align: left;margin: 0 auto;}
+#joinform .joincon h2{padding: 20px 0 ;}
+#joinform .joincon .joinfom {margin: 5px 0 ; padding: 20px 0;}
+#joinform .joincon .jointit {font-size: 18px;font-weight: 400;}
+#joinform .joincon .jointit {}
+#joinform .joincon input.putfom{width: 450px; height: 30px; border-radius: 5px; background: rgb(240, 240, 240); border: 1px solid; border-color: rgb(227, 227, 227);margin:10px 0;}
+#joinform .joincon input.putfomju{width: 210px; height: 30px; border-radius: 5px; background: rgb(240, 240, 240); border: 1px solid; border-color: rgb(227, 227, 227);float: left;}
+#joinform .joincon input.putfomnum{width: 200px; height: 30px; border-radius: 5px; background: rgb(240, 240, 240); border: 1px solid; border-color: rgb(227, 227, 227);}
+#joinform .joincon input.postbtn{margin-left: 10px;height: 33px;background: #478BE1;border-radius: 7px;border: 1px;color: #fff;font-size: 13px;padding: 5px 30px;}
+#joinform .joincon .joincheck h4{padding:10px 0 30px 0;}
+#joinform .joincon .joincheck ul li{float: left;width: 20%;padding: 10px;}
+#joinform .joincon .joinokbtn {margin-top: 150px;text-align: center;}
+#joinform .joincon .joinokbtn .jointruebtn{height: 33px;background: #478BE1;border-radius: 30px;border: 1px;color: #fff;font-size: 16px;padding: 5px 30px;}
+
+
+
+
+#loginform{padding-top:200px;height: 500px;}
+#loginform .logincon{width: 450px;text-align: left;margin: 0 auto;}
+#loginform .logincon h2.loh2{margin-bottom: 40px;}
+#loginform .logincon .loginfom {margin: 15px 0 ; }
+#loginform .logincon .logintit {font-size: 18px;font-weight: 400;}
+#loginform .logincon input.putfom{width: 450px; height: 35px; border-radius: 5px; background: rgb(240, 240, 240); border: 1px solid; border-color: rgb(227, 227, 227);margin:10px 0;}
+#loginform .logincon .loginbtn{width: 450px;height: 39px;background: #487BE1 ;border-radius: 7px;border: 1px;color: #fff;font-size: 15px;padding: 5px 30px;margin-bottom: 10px;}
+#loginform .logincon .loginbtn2{width: 450px;height: 39px;background: #aeaeae ;border-radius: 7px;border: 1px;color: #fff;font-size: 15px;padding: 5px 30px;margin-bottom: 10px;}
+#loginform .logincon ul li{float: left;width: 50%;}
+#loginform .logincon ul li a{font-size: 13px;}
+#loginform .logincon ul li:last-child{text-align: right;}
+
+
+
+
+#joinupform{padding-top:50px;height: 1000px;}
+#joinupform .joincon{width: 450px;text-align: left;margin-left:100px;}
+#joinupform .joincon h2{padding: 20px 0 ;}
+#joinupform .joincon .joinfom {margin: 5px 0 ; padding: 20px 0;}
+#joinupform .joincon .jointit {font-size: 18px;font-weight: 400;}
+#joinupform .joincon .jointit {}
+#joinupform .joincon input.putfom{width: 450px; height: 30px; border-radius: 5px; background: rgb(240, 240, 240); border: 1px solid; border-color: rgb(227, 227, 227);margin:10px 0;}
+#joinupform .joincon input.putfomju{width: 210px; height: 30px; border-radius: 5px; background: rgb(240, 240, 240); border: 1px solid; border-color: rgb(227, 227, 227);float: left;}
+#joinupform .joincon input.putfomnum{width: 200px; height: 30px; border-radius: 5px; background: rgb(240, 240, 240); border: 1px solid; border-color: rgb(227, 227, 227);}
+#joinupform .joincon input.postbtn{margin-left: 10px;height: 33px;background: #0058a8;border-radius: 7px;border: 1px;color: #fff;font-size: 13px;padding: 5px 30px;}
+#joinupform .joincon .joincheck h4{padding:10px 0 30px 0;}
+#joinupform .joincon .joincheck ul li{float: left;width: 20%;padding: 10px;}
+#joinupform .joincon .joinokbtn {margin-top: 150px;text-align: center;}
+#joinupform .joincon .joinokbtn .jointruebtn{height: 33px;background: #0058a8;border-radius: 30px;border: 1px;color: #fff;font-size: 16px;padding: 5px 30px;}
+/*#joinupform 모바일*/
+@media screen and (max-width:640px) {
+	#joinupform .joincon {
+    width: 100%;
+    text-align: left;
+    margin-left: 0px;
+}
+	#joinupform .joincon input.putfom {
+    width: 100%;
+
+
+}
+	
+}
+
+
+
+
+
+#findform input{border-width: thin;}
+#findform .findemail{width:600px;margin:0 auto;margin-top:120px;}
+
+#findform .findemail h2{margin-bottom:60px;}
+#findform .findemail .f_line {border:1px solid #487BE1; border-radius:15px;width:500px;height:150px; padding:50px 30px;}
+
+#findform .findemail .f_line .find{font-size:19px;font-weight:500;}
+#findform .findemail .f_line .find .putfom1{margin-left:40px;width:80%;height:25px;margin-bottom:15px;}
+#findform .findemail .f_line .find .putfom2{margin:10px 8px 30px 8px;width:36%;height:25px;}
+
+#findform .findemail .f_line .findbtn{border:1px solid #487BE1; border-radius:100px;background:#487BE1;color:#fff;width:150px;text-align:center;padding:2px 15px;}
+
+
+#findform .findpw{width:600px;margin:0 auto;margin-top:120px;margin-bottom:150px;}
+
+#findform .findpw h2{margin-bottom:60px;}
+#findform .findpw .f_line2 {border:1px solid #487BE1; border-radius:15px;width:500px;height:200px; padding:50px 30px;}
+
+#findform .findpw .f_line2 .find{font-size:19px;font-weight:500;}
+#findform .findpw .f_line2 .find .putfom1{margin-left:40px;width:80%;height:25px;margin-bottom:15px;}
+#findform .findpw .f_line2 .find .putfom3{margin-left:24px;width:80%;height:25px;margin-bottom:15px;}
+#findform .findpw .f_line2 .find .putfom2{margin:10px 8px 30px 8px;width:36%;height:25px;}
+
+#findform .findpw .f_line2 .findbtn{border:1px solid #487BE1; border-radius:100px;background:#487BE1;color:#fff;width:150px;text-align:center;padding:2px 15px;}
+

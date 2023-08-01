@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="product">
+
+	<sql id="criteria">
+		<trim prefix="( " suffix=" ) " prefixOverrides="OR">
+			<foreach item='type' collection="typeArr">
+				<trim prefix="OR">
+					<choose>
+						<when test="type=='T'.toString()">
+							P_TITLE like '%'||#{keyword}||'%'
+						</when>
+						<when test="type=='C'.toString()">
+							P_CONTENT like '%'||#{keyword}||'%'
+						</when>
+						<when test="type=='W'.toString()">
+							P_NICKNAME like '%'||#{keyword}||'%'
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
+
+	<select id="adminPList" parameterType="hashmap"
+		resultType="hashmap">
+		<include refid="common.pagingPre" />
+		<![CDATA[
+			SELECT ROW_NUMBER() OVER(ORDER BY ${FILTER} DESC) RNUM, 
+			P_ID, P_TITLE, P_DATE, P_PRICE, P_CATEGORY, P_NICKNAME, 
+			P_ITEM, P_SELLBUY, P_COUNT, PJJIM_COUNT, P_AREA, P_CONTENT  
+			FROM  PRODUCT
+		]]>
+		<if
+			test="P_AREA!=NULL or P_SELLBUY!=NULL or P_ITEM!=NULL or (type!='' and type!=NULL)"> WHERE </if>
+		<trim prefixOverrides="AND">
+			<if test="P_AREA!=NULL"> AND P_AREA=#{P_AREA}</if>
+			<if test="P_SELLBUY!=NULL"> AND P_SELLBUY=#{P_SELLBUY}</if>
+			<if test="P_ITEM!=NULL"> AND P_ITEM=#{P_ITEM}</if>
+		</trim>
+		<if test="P_AREA!=NULL or P_SELLBUY!=NULL or P_ITEM!=NULL">
+			<if test="type!='' and type!=NULL">
+				AND
+			</if>
+		</if>
+		<include refid="criteria" />
+		<include refid="common.pagingPost" />
+	</select>
+
+	<select id="selectProductList" parameterType="hashmap"
+		resultType="hashmap">
+		<include refid="common.pagingPre" />
+		<![CDATA[
+			SELECT ROW_NUMBER() OVER(ORDER BY ${FILTER} DESC) RNUM, 
+			P_ID, P_TITLE,  P_IMAGE, P_DATE, P_PRICE, P_CATEGORY, P_NICKNAME  
+			FROM  PRODUCT 
+			WHERE P_SELLBUY = #{P_SELLBUY} and P_AREA = #{P_AREA} and P_ITEM = #{P_ITEM}
+		]]>
+		<trim prefix=" AND ">
+			<include refid="criteria" />
+		</trim>
+		<include refid="common.pagingPost" />
+	</select>
+
+	<select id="selectMainProductList" parameterType="hashmap"
+		resultType="hashmap">
+		<include refid="common.pagingPre" />
+		<![CDATA[
+			SELECT ROW_NUMBER() OVER(ORDER BY ${FILTER} DESC) RNUM, 
+			P_ID, P_TITLE,  P_IMAGE, P_CATEGORY, P_PRICE, P_NICKNAME  FROM  PRODUCT
+		]]>
+		<include refid="common.pagingPost" />
+	</select>
+
+	<select id="selectMainCategoryProductList"
+		parameterType="hashmap" resultType="hashmap">
+		<include refid="common.pagingPre" />
+		SELECT ROW_NUMBER() OVER(ORDER BY ${FILTER} DESC) RNUM,
+		P_ID, P_TITLE,
+		P_IMAGE, P_CATEGORY, P_PRICE, P_NICKNAME
+		FROM PRODUCT
+		WHERE P_CATEGORY
+		IN
+		<foreach item="category" collection="list" open="(" close=")"
+			separator=",">
+			#{category}
+		</foreach>
+
+		<include refid="common.pagingPost" />
+	</select>
+
+	<select id="selectMainAreaProductList" parameterType="hashmap"
+		resultType="hashmap">
+		<include refid="common.pagingPre" />
+		<![CDATA[
+			SELECT ROW_NUMBER() OVER(ORDER BY ${FILTER} DESC) RNUM, 
+			P_ID, P_TITLE,  P_IMAGE, P_CATEGORY, P_PRICE, P_NICKNAME  FROM  PRODUCT WHERE P_AREA = #{P_AREA}
+		]]>
+		<include refid="common.pagingPost" />
+	</select>
+
+	<insert id="insertProduct" parameterType="hashmap">
+		<![CDATA[
+			INSERT INTO PRODUCT 
+			VALUES (#{P_ID}, #{P_TITLE}, #{P_IMAGE},sysdate,#{P_PRICE}, #{P_CONTENT}, #{P_CATEGORY}, #{P_NICKNAME}, #{P_ITEM}, #{P_SELLBUY}, 0,0, #{P_AREA})
+		]]>
+	</insert>
+
+	<insert id="insertImage" parameterType="hashmap">
+	<![CDATA[
+		INSERT INTO IMAGE
+		(
+			I_IDX,
+			IP_ID,
+			O_FILE_NAME,
+			S_FILE_NAME,
+			CREA_DTM
+		)
+		VALUES
+		(
+			I_IDX_SEQ.NEXTVAL,
+			#{P_ID},
+			#{O_FILE_NAME},
+			#{S_FILE_NAME},
+			sysdate
+		)
+	]]>
+	</insert>
+
+	<select id="selectImageList" parameterType="hashmap"
+		resultType="hashmap">
+	<![CDATA[
+	 SELECT 
+         I_IDX,
+         O_FILE_NAME,
+         S_FILE_NAME
+   FROM 
+        IMAGE
+   where 
+         IP_ID=#{P_ID}
+         and DEL_GB='N'
+         order by I_IDX asc
+	]]>
+	</select>
+
+	<select id="selectMaxPID" resultType="int">
+	<![CDATA[
+	SELECT P_ID_SEQ.NEXTVAL FROM DUAL
+	]]>
+	</select>
+
+	<update id="deleteImageList" parameterType="hashmap">
+	<![CDATA[
+		UPDATE 
+		    IMAGE 
+		SET 
+			DEL_GB = 'Y' 
+		WHERE 
+			IP_ID = #{P_ID}	
+	]]>
+	</update>
+
+	<update id="updateImage" parameterType="hashmap">
+	<![CDATA[
+		UPDATE 
+		    IMAGE 
+		SET
+			DEL_GB = 'N'
+		WHERE
+			I_IDX = #{IMAGE_IDX}	
+	]]>
+	</update>
+
+	<update id="updateHitCnt" parameterType="hashmap">
+		<![CDATA[
+			UPDATE PRODUCT 
+			SET
+				P_COUNT = NVL(P_COUNT, 0) + 1
+			WHERE
+				P_ID = #{P_ID}	
+		]]>
+	</update>
+
+	<select id="selectProductDetail" parameterType="hashmap"
+		resultType="hashmap">
+		<![CDATA[
+                SELECT 
+          P.*, M.*
+     FROM 
+          PRODUCT P, MEMBER M 
+     WHERE 
+          P.P_NICKNAME=M.M_NICKNAME AND P.P_ID=#{P_ID}
+		]]>
+	</select>
+
+	<update id="updateProduct" parameterType="hashmap">
+		UPDATE PRODUCT
+		SET P_TITLE = #{P_TITLE}, P_CONTENT = #{P_CONTENT},
+		<if test="P_IMAGE!=null">P_IMAGE = #{P_IMAGE}, </if>
+		P_PRICE = #{P_PRICE} WHERE P_ID = #{P_ID}
+	</update>
+
+	<update id="deleteProduct" parameterType="hashmap">
+		<![CDATA[
+			DELETE FROM PRODUCT WHERE P_ID = #{P_ID}
+		]]>
+	</update>
+
+	<!-- 찜횟수 증가 -->
+	<update id="updateJjimCount" parameterType="hashmap">
+		<![CDATA[
+			UPDATE PRODUCT SET PJJIM_COUNT=PJJIM_COUNT+${count} WHERE P_ID = #{P_ID}
+		]]>
+	</update>
+
+	<select id="myProductList" parameterType="hashmap"
+		resultType="hashmap">
+		<include refid="common.pagingPre" />
+		<![CDATA[
+        SELECT ROW_NUMBER() OVER(ORDER BY ${FILTER} DESC) RNUM, 
+        P_ID, P_SELLBUY, P_ITEM, P_CATEGORY, P_IMAGE, P_AREA, P_TITLE, P_PRICE, PJJIM_COUNT, P_DATE, P_COUNT
+     	FROM PRODUCT
+     	WHERE P_NICKNAME=#{M_NICKNAME}
+		]]>
+		<include refid="common.pagingPost" />
+	</select>
+
+</mapper>

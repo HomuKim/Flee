@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="accuse">
+
+	<sql id="criteria">
+		<trim prefix="WHERE " prefixOverrides="OR">
+			<foreach item='type' collection="typeArr">
+				<trim prefix="OR">
+					<choose>
+						<when test="type=='A'.toString()">
+							ACU_NICKNAME like '%'||#{keyword}||'%'
+						</when>
+						<when test="type=='C'.toString()">
+							A_NICKNAME like '%'||#{keyword}||'%'
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
+
+	<!-- writeAccuse(신고하기) -->
+	<insert id="writeAccuse" parameterType="hashmap">
+<![CDATA[
+	INSERT INTO 
+	ACCUSE ( ACU_NICKNAME, A_CONTENT, A_DATE, A_NICKNAME, A_STATUS, A_IDX)
+	VALUES (
+	#{ACU_NICKNAME},
+	#{A_CONTENT},
+	sysdate,
+	#{A_NICKNAME},
+	0,
+	A_IDX_SEQ.NEXTVAL)
+	
+]]>
+	</insert>
+
+
+	<select id="adminAList" parameterType="hashmap"
+		resultType="hashmap">
+		<include refid="common.pagingPre" /> 
+		<![CDATA[
+	SELECT 
+	ROW_NUMBER() OVER(ORDER BY A_IDX) RNUM, 
+		A_IDX,
+		ACU_NICKNAME,
+		A_CONTENT,
+		A_DATE,
+		A_NICKNAME,
+		A_STATUS		
+	FROM
+   		 ACCUSE
+			]]>
+		<include refid="criteria"/>
+		<include refid="common.pagingPost" />
+	</select>
+
+
+	<update id="adminAupdate" parameterType="hashmap">
+		<![CDATA[
+			UPDATE ACCUSE 
+			SET
+				A_STATUS = 1
+			WHERE
+				A_IDX = #{A_IDX}	
+		]]>
+	</update>
+
+
+</mapper>
+	

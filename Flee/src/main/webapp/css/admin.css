@@ -1,0 +1,985 @@
+@import url(default.css);
+
+@import url(common.css);
+
+@import url(contents.css);
+
+@import url(sub.css);
+
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+.adminbody {
+	width: 100%;
+	height: 1390px;
+}
+
+@media screen and (max-width:640px) {
+
+
+.adminbody {
+	height: 1800px;
+}
+
+}
+i.grade1 {
+	color: #74b76e;
+	cursor: pointer;
+	padding-left: 3px;
+}
+
+i.grade2 {
+	color: #478BE1;
+	cursor: pointer;
+	padding-left: 3px;
+}
+
+i.grade3 {
+	color: #e3983e;
+	cursor: pointer;
+	padding-left: 3px;
+}
+
+.lnb {
+	position: absolute;
+	left: 0;
+	top: 280px;
+	width: 100%;
+	z-index: 299;
+}
+
+.lnb .depth1 {
+	display: none;
+}
+
+.lnb .depth2 button {
+	display: none;
+}
+
+.lnb ul {
+	
+}
+/* li의 넓이는 html에서 제어 - li에 border랑 padding 주면 안 됨 */
+.lnb ul li {
+	float: left;
+	background: #fff;
+	text-align: center;
+}
+
+.lnb ul li a {
+	text-decoration: none;
+	color: #3d3d3d;
+	font-size: 17px;
+	display: block;
+	line-height: 50px;
+	border: 1px solid #e7e7e7;
+	border-left: 0;
+}
+
+.lnb ul li:first-child a {
+	border-left: 1px solid #e7e7e7;
+}
+
+.lnb ul li.onon {
+	background: #478BE1;
+}
+
+.lnb ul li.onon a {
+	color: #fff;
+}
+
+/* lnb가 고정일 때*/
+.lnb.scroll {
+	position: fixed;
+	top: 156px;
+	background: #478BE1;
+}
+
+.lnb.scroll ul li {
+	background: #478BE1;
+}
+
+.lnb.scroll ul li a {
+	color: #fff;
+	border-bottom: 0;
+	border-top: 0;
+}
+
+.lnb.scroll ul li.onon {
+	background: #fff;
+}
+
+.lnb.scroll ul li.onon a {
+	color: #478BE1;
+	font-weight: 400;
+}
+
+@media screen and (max-width:640px) {
+	.lnb {
+		top: 243px;
+	}
+	.lnb .depth1 {
+		display: block;
+	}
+	.lnb .depth2 button {
+		display: block;
+	}
+	.lnb .menu_depth {
+		float: left;
+		width: 50%;
+	}
+	.lnb button {
+		display: block;
+		line-height: 60px;
+		color: #fff;
+		font-size: 17px;
+		font-weight: 400;
+		width: 100%;
+		font-weight: 300;
+		padding-left: 7%;
+		text-align: left;
+		background: #0b4086 url(../images/sub/lnb_open.png) right 7% top 25px
+			no-repeat;
+	}
+	/* depth1이나 depth2에 on클래스가 추가되면 button 배경이 바뀜 */
+	.lnb .on button {
+		background: #0b4086 url(../images/sub/lnb_close.png) right 7% top 25px
+			no-repeat;
+	}
+	.lnb .depth2 button {
+		border-left: 1px solid #fff;
+	}
+	.lnb .depth2 ul {
+		border-left: 1px solid #fff;
+	}
+	.lnb ul {
+		display: none;
+	}
+	/* html에서 2차메뉴에 넓이를 강제로 준 값 해제 important */
+	.lnb ul li {
+		float: none;
+		width: 100% !important;
+		background: #0b8662;
+		text-align: left;
+	}
+	.lnb ul li a {
+		color: #fff;
+		font-size: 17px;
+		display: block;
+		line-height: 50px;
+		border: 0;
+		border-top: 1px solid #fff;
+		padding-left: 7%;
+		font-weight: 400;
+	}
+	.lnb ul li:first-child a {
+		border-left: 0;
+	}
+	.lnb ul li.on {
+		background: #072a57;
+	}
+	.lnb ul li.on a {
+		color: #fff;
+	}
+	.lnb.scroll {
+		position: fixed;
+		top: 50px;
+		background: none;
+	}
+	.lnb.scroll .wrap {
+		margin: 0;
+	}
+	.lnb.scroll ul li {
+		background: #0b8662;
+	}
+	.lnb.scroll ul li a {
+		color: #fff;
+		border-bottom: 0;
+		border-top: 1px solid #fff;
+		font-weight: 400;
+	}
+	.lnb.scroll ul li.on {
+		background: #072a57;
+	}
+	.lnb.scroll ul li.on a {
+		color: #fff;
+		font-weight: 400;
+	}
+}
+
+.double .aboutm {
+	margin: 100px 50px 50px 50px;
+	height: 300px;
+}
+
+.double .aboutm .memberbox {
+	padding: 10px;
+	background: #f1f1f1;
+	height: 270px;
+}
+
+.double .aboutm .memberbox .memberimg {
+	padding: 30px 30px 30px 70px;
+	float: left;
+	text-align: center;
+	padding-left: 50px;
+}
+
+.double .aboutm .memberbox .memberimg .p_img {
+	width: 180px;
+	height: 180px;
+	border-radius: 100px;
+}
+
+.double .aboutm .memberbox .memberlist {
+	width: 69%;
+	padding: 21px;
+	float: right;
+}
+
+.double .aboutm .memberbox .memberlist ul.memberbox2 .mbigtext {
+	padding: 5px;
+	height: 29%;
+	width: 90%;
+}
+
+.double .aboutm .memberbox .memberlist ul.memberbox2 .mbigtext ul li {
+	float: left;
+}
+
+.double .aboutm .memberbox .memberlist ul.memberbox2 .mbigtext ul li span
+	{
+	float: left;
+	font-weight: 600;
+	font-size: 19px;
+}
+
+.double .aboutm .memberbox .memberlist ul.memberbox2 li.mbigtext ul li p
+	{
+	padding: 2px 10px 2px 10px;;
+	float: left;
+}
+
+.double .aboutm .memberbox .memberlist ul.memberbox2 li.msmalltext {
+	padding: 50px 0 0 0;
+}
+
+.double .aboutm .memberbox .memberlist ul.memberbox2 li.msmalltext ul.memberbox3
+	{
+	position: relative;
+	padding: 0 0 0 5px;
+}
+
+.double .aboutm .memberbox .memberlist ul.memberbox2 li.msmalltext ul.memberbox3 li
+	{
+	width: 100%;
+}
+
+.double .aboutm .memberbox .memberlist ul.memberbox2 li.msmalltext ul.memberbox3 li ul.flaft
+	{
+	
+}
+
+.double .aboutm .memberbox .memberlist ul.memberbox2 li.msmalltext ul.memberbox3 li ul.flaft li
+	{
+	
+}
+
+.double .aboutm .memberbox .memberlist ul.memberbox2 li.msmalltext ul.memberbox3 li ul.flaft .strong
+	{
+	font-weight: 500;
+	width: 100px;
+	float: left;
+}
+
+.double .aboutm .memberbox .memberlist ul.memberbox2 li.msmalltext ul.memberbox3 li.memup
+	{
+	position: absolute;
+	left: 666px;
+	top: -54px;
+}
+
+.double .aboutm .memberbox .memberlist ul.memberbox2 li.msmalltext ul.memberbox3 li.goprofile
+	{
+	position: absolute;
+	left: 618px;
+	top: 120px;
+}
+
+.double .aboutm .memberbox .memberlist ul.memberbox2 li.msmalltext ul.memberbox3 li
+	{
+	width: 100%;
+}
+
+/* .double .aboutm .memberbox .memberlist ul.memberbox2 li.msmalltext ul.memberbox3 li strong */
+/* 	{ */
+
+/* 	font-weight: 500; */
+/* 	padding-right:100px; */
+/* } */
+.double .aboutm .mytext {
+	width: 100% .;
+	height: 200px;
+}
+
+.double .aboutm .mytext li {
+	float: left;
+	padding: 10px;
+	margin-top: 20px;
+}
+
+.double .aboutm .mytext li:first-child {
+	width: 30%
+}
+
+.double .aboutm .mytext li:last-child {
+	width: 65%
+}
+
+.double .aboutm .mytext li h5 {
+	font-weight: 500;
+	font-size: 17px;
+	padding-left: 5px;
+}
+
+.double .aboutm .mytext li .textbox {
+	padding: 10px;
+	border-top: 1px solid #333;
+	margin: 10px 5px;
+	min-height: 90px;
+	word-break: break-all;
+}
+
+.double .aboutm .mytext li .textbox2 {
+	padding: 10px;
+	border-top: 1px solid #333;
+	margin: 10px 5px;
+	min-height: 90px;
+	word-break: break-all;
+	white-space: nowarp;
+}
+
+@media screen and (max-width:640px) {
+	.double .aboutm {
+		margin: 50px 0px 50px 0px;
+		height: auto;
+	}
+	.double .aboutm .memberbox {
+		width: 100%;
+		padding: 10px;
+		background: #fff;
+		height: auto;
+	}
+	.double .aboutm .memberbox .memberimg {
+		padding: 30px 30px 30px 70px;
+		float: none;
+		text-align: center;
+		padding-left: 50px;
+	}
+	.double .aboutm .memberbox .memberlist {
+		padding: 20px 30px;
+		background: rgb(239, 239, 239);
+		float: none;
+		width: 90%;
+	}
+	.double .aboutm .memberbox .memberlist ul.memberbox2 .mbigtext {
+		padding: 5px;
+		display: inline;
+	}
+	.double .aboutm .memberbox .memberlist ul.memberbox2 .mbigtext ul li {
+		float: none;;
+	}
+	.double .aboutm .memberbox .memberlist ul.memberbox2 .mbigtext ul li span
+		{
+		float: left;
+		font-weight: 600;
+		font-size: 18px;
+		width: 29%;
+		margin: 0px
+	}
+	.double .aboutm .memberbox .memberlist ul.memberbox2 li.mbigtext ul li p
+		{
+		float: none;
+	}
+	.double .aboutm .memberbox .memberlist ul.memberbox2 li.msmalltext ul.memberbox3 li.memup
+		{
+	position: absolute;
+    left: 70%;
+    top: 87%;
+	}
+	.double .aboutm .memberbox .memberlist ul.memberbox2 li.msmalltext ul.memberbox3 li.goprofile
+		{
+		padding-top: 10px;
+		position: unset;
+	}
+	.double .aboutm .mytext li:first-child {
+		width: 100%;
+	}
+	.double .aboutm .mytext li:last-child {
+		width: 100%;
+	}
+}
+
+.double .membert {
+	width: 100%;
+	float: left;
+	margin-top: 20px
+}
+
+.double .membert .textline {
+	margin: 50px 0 100px 50px;
+}
+
+.double .membert .textline h3 {
+	font-size: 19pt;
+}
+
+.double .membert .textline .search {
+	text-align: center;
+	padding: 90px 0 50px 0;
+	border-bottom: 1px solid #000;
+}
+
+.double .membert .textline .search img {
+	width: 20px;
+}
+
+.double .membert .content {
+	padding-top: 100px;
+	margin-left: 50px;
+}
+
+.double .membert .mypagetext {
+	width: 100%;
+	height: 400px;
+	margin-top: 50px;
+	margin-left: 50px;
+}
+
+.double .membert .mypagetext::after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+.double .membert .mypagetext ul.mtbtn {
+	margin-top: 30px;
+}
+
+.double .membert .mypagetext .mtbtn li.mtli {
+	float: left;
+	height: 30px;
+	text-align: center;
+	cursor: pointer;
+	color: #fff;
+	border-radius: 100px;
+	background-color: #aeaeae;
+	width: 140px;
+	margin-right: 15px;
+	text-align: center;
+	padding: 10px;
+}
+
+.double .membert .mypagetext .mtbtn .mtli.onon {
+	border-radius: 100px;
+	background-color: #487BE1;
+}
+
+.double .membert .mypage_textbox {
+	padding: 100px 0;
+}
+
+.double .membert .mypage_textbox div.mttab {
+	height: 300px;
+}
+
+/* .double .membert .mypage_textbox>div>div { */
+/* 	width: 100%; */
+/* 	height: 100%; */
+/* 	display: none!importent; */
+/* } */
+.double .membert .mypage_textbox>div>div.active {
+	display: block;
+}
+
+.double .membert .mypage_textbox .mtview h3 {
+	font-size: 23px;
+	margin-bottom: 30px;
+}
+
+.double .membert .mypage_textbox .mtview .board_list1 {
+	width: 90%;
+	table-layout: fixed
+}
+
+.double .membert .mypage_textbox .mtview .board_list1 thead {
+	
+}
+
+.double .membert .mypage_textbox .mtview .board_list1 thead tr {
+	
+}
+
+.double .membert .mypage_textbox .mtview .board_list1 thead tr th {
+	font-size: 18px;
+	font-weight: 300;
+	height: 40px;
+	background: #eaeaea;
+	border-radius: 9px;
+}
+
+.double .membert .mypage_textbox .mtview .board_list1 tbody {
+	text-align: center;
+}
+
+.double .membert .mypage_textbox .mtview .board_list1 tbody tr td {
+	border-bottom: 1px solid #8d8d8d;
+	padding: 10px 10px;
+	font-size: 15px;
+	font-weight: 300;
+	overflow: hidden;
+}
+
+.double .membert .mypage_textbox .mtview h3 {
+	font-size: 23px;
+	margin-bottom: 30px;
+}
+
+.double .membert .mypage_textbox .mtview .board_list2 {
+	width: 90%;
+	table-layout: fixed
+}
+
+.double .membert .mypage_textbox .mtview .board_list2 thead {
+	
+}
+
+.double .membert .mypage_textbox .mtview .board_list2 thead tr {
+	
+}
+
+.double .membert .mypage_textbox .mtview .board_list2 thead tr th {
+	font-size: 18px;
+	font-weight: 300;
+	height: 40px;
+	background: #eaeaea;
+	border-radius: 9px;
+}
+
+.double .membert .mypage_textbox .mtview .board_list2 tbody {
+	text-align: center;
+}
+
+.double .membert .mypage_textbox .mtview .board_list2 tbody tr td {
+	border-bottom: 1px solid #8d8d8d;
+	padding: 10px 10px;
+	font-size: 15px;
+	font-weight: 300;
+}
+
+.double .membert .mypage_textbox .mtview h3 {
+	font-size: 23px;
+	margin-bottom: 30px;
+}
+
+.double .membert .mypage_textbox .mtview .board_list3 {
+	width: 90%;
+}
+
+.double .membert .mypage_textbox .mtview .board_list3 thead {
+	
+}
+
+.double .membert .mypage_textbox .mtview .board_list3 thead tr {
+	
+}
+
+.double .membert .mypage_textbox .mtview .board_list3 thead tr th {
+	font-size: 18px;
+	font-weight: 300;
+	height: 40px;
+	background: #eaeaea;
+	border-radius: 9px;
+}
+
+.double .membert .mypage_textbox .mtview .board_list3 tbody {
+	text-align: center;
+}
+
+.double .membert .mypage_textbox .mtview .board_list3 tbody tr td {
+	border-bottom: 1px solid #8d8d8d;
+	padding: 10px 10px;
+	font-size: 15px;
+	font-weight: 300;
+}
+
+@media screen and (max-width:640px) {
+	.double .membert .mypagetext{margin-left:5px;}
+	.double .membert .mypagetext .mtbtn li.mtli {
+		width: 100px;
+	}
+}
+/*페이징 모음*/
+#pagingr {
+	margin: 30px;
+}
+
+#pagingr .paging1 {
+	text-align: center;
+	margin: 0 auto;
+	width: auto;
+	max-width: 200px;
+}
+
+#pagingr .paging1 ul li {
+	float: left;
+	padding: 1px 15px;
+}
+
+#pagingr .paging1 ul li.active {
+	float: left;
+	color: #487BE1;
+	padding: 1px 15px;
+	border-bottom: 3px solid #487BE1;
+	font-weight: 500;
+}
+
+#pagingr .paging1 ul li a {
+	text-decoration: none;
+	font-weight: 500;
+	color: #8d8d8d;
+}
+
+#pagingc {
+	margin: 30px;
+}
+
+#pagingc .paging1 {
+	text-align: center;
+	margin: 0 auto;
+	width: auto;
+	max-width: 200px;
+}
+
+#pagingc .paging1 ul li {
+	float: left;
+	padding: 1px 15px;
+}
+
+#pagingc .paging1 ul li.active {
+	float: left;
+	color: #487BE1;
+	padding: 1px 15px;
+	border-bottom: 3px solid #487BE1;
+	font-weight: 500;
+}
+
+#pagingc .paging1 ul li a {
+	text-decoration: none;
+	font-weight: 500;
+	color: #8d8d8d;
+}
+
+#pagingq {
+	margin: 30px;
+}
+
+#pagingq .paging1 {
+	text-align: center;
+	margin: 0 auto;
+	width: auto;
+	max-width: 200px;
+}
+
+#pagingq .paging1 ul li {
+	float: left;
+	padding: 1px 15px;
+}
+
+#pagingq .paging1 ul li.active {
+	float: left;
+	color: #487BE1;
+	padding: 1px 15px;
+	border-bottom: 3px solid #487BE1;
+	font-weight: 500;
+}
+
+#pagingq .paging1 ul li a {
+	text-decoration: none;
+	font-weight: 500;
+	color: #8d8d8d;
+}
+
+/*관리자후기상세*/
+.minwrap {
+	margin: 0 auto;
+	width: 900px;
+}
+
+.minwrap .adrbox {
+	margin: 20px;
+	padding: 20px;
+	text-align: left;
+	height: 320px;
+	border: 3px solid #478BE1;
+	border-radius: 15px;
+}
+
+.minwrap .adrbox h3 {
+	padding: 10px 0 20px 0;
+}
+
+.minwrap .adrbox .boxtext1 {
+	float: left;
+	width: 40%;
+}
+
+.minwrap .adrbox .boxtext1 ul li {
+	padding: 5px;
+}
+
+.minwrap .adrbox .boxtext2 {
+	float: left;
+	border-radius: 15px;
+	background: #f1f1f1;
+	padding: 10px 20px;
+	width: 54%;
+	height: 68%;
+}
+/*관리자 프로덕트*/
+.memberList tr td .adbtn {
+	border: 1px solid #478BE1;
+	border-radius: 100px;
+	color: #478BE1 !important;
+	font-size: 14px;
+	padding: 3 7;
+}
+
+/*리뷰*/
+#modal3 {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	left: 0;
+	top: 100px;
+	display: none;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	text-align: center;
+}
+
+#modal3 .modal-window {
+	background: #FFF;
+	backdrop-filter: blur(13.5px);
+	border-radius: 10px;
+	border: 1px solid #9d9d9d;
+	width: 500px;
+	height: 200px;
+	position: relative;
+	padding: 10px;
+	text-align: left;
+}
+
+#modal3 .title {
+	margin-top: 70px;
+	padding-left: 10px;
+	display: inline;
+	color: #5d5d5d;
+}
+
+#modal3 .title p {
+	padding-left: 10px;
+	font-size: 15px;
+	padding-bottom: 10px;
+}
+
+#modal3 .title .rvwho {
+	height: 80px;
+	margin-top: 20px;
+	padding-left: 22px;
+}
+
+#modal3 .title .rvwho h3 {
+	text-align: left;
+	padding-left: 10px;
+}
+
+#modal3 .title .rvwho span {
+	padding-top: 15px;
+	text-align: left;
+	padding-left: 10px;
+	font-size: 18px;
+	font-weight: 400;
+}
+
+#modal3 .close-area {
+	display: inline;
+	float: right;
+	padding-right: 10px;
+	cursor: pointer;
+	color: #2d2d2d;
+	font-size: 19px;
+}
+
+#modal3 .content {
+	padding: 0px 10px;
+	color: white;
+	text-align: left;
+}
+
+#modal3 .content ul {
+	text-align: center;
+}
+
+#modal3 .content ul li.off {
+	width: 80%;
+	height: 20px;
+	padding: 5px 10px;
+	border-radius: 100px;
+	border: 1px solid #a7b5d8;
+	margin: 20px;
+}
+
+#modal3 .content ul li.on {
+	width: 80%;
+	height: 20px;
+	padding: 5px 10px;
+	border-radius: 100px;
+	border: 1px solid #487BE1;
+	background: #487BE1;
+	margin: 20px;
+	color: #fff
+}
+
+#modal3 .content ul li.on a {
+	color: #fff
+}
+
+#modal3 .content ul li a {
+	text-decoration: none;
+	color: #3d3d3d;
+}
+
+#modal3 .content p {
+	color: #3d3d3d;
+	font-size: 15px;
+	padding: 0 10px;
+	float: left;
+}
+
+#modal3 .content p::after {
+	color: #3d3d3d;
+	font-size: 15px;
+	padding-left: 10px;
+	float: left;
+}
+
+#modal3 .content .contentin {
+	width: 74%;
+	padding: 10px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#modal3 .modal-window .content contentin p {
+	float: left;
+}
+
+#modal3 .modal-window .content .stardr .star {
+	position: relative;
+	font-size: 2rem;
+	color: #ddd;
+}
+
+#modal3 .modal-window .content .stardr .star input {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	opacity: 0;
+	cursor: pointer;
+}
+
+#modal3 .modal-window .content .stardr .star span {
+	width: 0;
+	position: absolute;
+	left: 0;
+	color: #ffd500;
+	overflow: hidden;
+	pointer-events: none;
+}
+
+#modal3 .modal-window .content .reviewtext {
+	width: 90%;
+	height: 200px;
+	margin: 0 auto;
+	padding-bottom: 20px;
+}
+
+#modal3 .modal-window .modalbtn {
+	width: 120px;
+	height: 30px;
+	border: 1px solid #487BE1;
+	padding: 0 15px;
+	border-radius: 100px;
+	background: #487BE1;
+	color: #fff;
+	margin-top: 20px;
+}
+
+/*채팅로그*/
+.comboard3 {
+	width: 600px;
+	height: 600px;
+	padding: 10px 20px
+}
+
+.comboard3 h3 {
+	font-size: 24px;
+	border-bottom: 4px solid #478BE1;
+	margin-bottom: 30px;
+	padding: 10px 10px
+}
+
+.comboard3 .chatlogbox {
+	height: 500px;
+	padding: 20px 10px;
+	border: 3px solid #e1e1e1;
+	border-radius: 15px;
+}
+
+.comboard3 .chatlogbox #chatArea #chatMessageArea {
+	height: 500px;
+	overflow: scroll;
+}
+
+.comboard3 .chatlogbox #chatArea #chatMessageArea ul li {
+	padding: 10px;
+	width: 520px;
+	word-break: break-all;
+}
+
+#chatMessageArea::-webkit-scrollbar {
+	background-color: #fff;
+	width: 1rem;
+}
+
+#chatMessageArea::-webkit-scrollbar-track {
+	background-color: #fff;
+}
+
+#chatMessageArea::-webkit-scrollbar-thumb {
+	height: 15%;
+	background-color: #babac0;
+	border-radius: 1rem;
+	border: 4px solid #fff;
+}
+
+@media screen and (max-width:640px) {
+	.none {
+		display: none;
+	}
+}
+}

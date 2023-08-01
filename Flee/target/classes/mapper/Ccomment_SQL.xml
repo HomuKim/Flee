@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ccomment">
+
+	<select id="getComment" parameterType="int" resultType="hashmap">
+	<![CDATA[
+		SELECT * 
+			FROM C_COMMENT
+			WHERE CCOM_IDX=#{ccidx}
+	]]>
+	</select>
+
+	<select id="getCommentList" parameterType="hashmap"
+		resultType="hashmap">
+		<include refid="common.pagingPre" /> 
+	<![CDATA[
+	SELECT ROW_NUMBER() OVER(ORDER BY REF DESC,RE_STEP) RNUM, 
+			CCOM_IDX, CCOM_NICKNAME,  C_IDX, CCOM_DATE, CCOM_CONTENT, REF, RE_STEP, RE_LEVEL  
+			FROM C_COMMENT WHERE C_IDX = #{C_IDX}
+			]]>
+		<include refid="common.pagingPost" />
+	</select>
+
+	<select id="getCount" parameterType="int" resultType="int">
+   <![CDATA[
+      SELECT COUNT(CCOM_IDX) from C_COMMENT where C_IDX=#{C_IDX}
+      ]]>
+	</select>
+
+	<!-- insertComment(커뮤니티댓글 입력기능) -->
+	<insert id="writeComment" parameterType="hashmap"
+		useGeneratedKeys="true" keyProperty="CCOM_IDX">
+		<selectKey keyProperty="CCOM_IDX" resultType="string"
+			order="BEFORE">
+			select CCOM_IDX_SEQ.NEXTVAL from dual
+		</selectKey>
+	<![CDATA[
+		INSERT 
+		INTO C_COMMENT
+			VALUES(
+				#{CCOM_IDX}, 
+				#{C_IDX}, 
+				#{CCOM_NICKNAME}, 
+				SYSDATE, 
+				#{CCOM_CONTENT},
+				#{REF},#{RE_STEP},#{RE_LEVEL}
+				)
+	]]>
+	</insert>
+
+	<!-- updateComment(커뮤니티 댓글 수정 기능) -->
+	<update id="updateComment" parameterType="hashmap">
+        <![CDATA[
+				UPDATE C_COMMENT 
+					SET CCOM_CONTENT=#{CCOM_CONTENT} 
+				WHERE CCOM_IDX=#{CCOM_IDX}
+	   ]]>
+	</update>
+
+	<!-- updateRestep(댓글 작성시 대댓글일 경우) -->
+	<update id="updateReStep" parameterType="hashmap">
+	<![CDATA[
+		UPDATE C_COMMENT SET RE_STEP=RE_STEP+1
+		WHERE
+		C_IDX = #{C_IDX} and REF = #{REF} and re_step >= #{RE_STEP}
+		]]>
+	</update>
+
+	<!-- deleteComment(커뮤니티 댓글 삭제기능) -->
+	<delete id="deleteComment" parameterType="int">
+	<![CDATA[
+		DELETE 
+			FROM C_COMMENT
+			WHERE CCOM_IDX=#{CCOM_IDX}
+	]]>
+	</delete>
+
+</mapper>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="trade">
+
+	<sql id="criteria">
+		<trim prefix="AND " prefixOverrides="OR">
+			<foreach item='type' collection="typeArr">
+				<trim prefix="OR">
+					<choose>
+						<when test="type=='T'.toString()">
+							TP_TITLE like '%'||#{keyword}||'%'
+						</when>
+						<when test="type=='S'.toString()">
+							TS_NICKNAME like '%'||#{keyword}||'%'
+						</when>
+						<when test="type=='B'.toString()">
+							TB_NICKNAME like '%'||#{keyword}||'%'
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
+
+<!-- 보류 -->
+	<!-- 관리자 거래내역 리스트 -->
+	<select id="adminTList" parameterType="hashmap"
+		resultType="hashmap">
+		<include refid="common.pagingPre" /> 
+		<![CDATA[
+	         SELECT	ROW_NUMBER() OVER(ORDER BY T.T_IDX DESC) RNUM,
+		T.*, C.CROOM_IDX	
+	FROM
+		TRADE T, CHATROOM C
+   	WHERE
+   		T.TP_ID=C.CP_ID(+)  AND T.TB_NICKNAME=C.SEND_NICKNAME(+) AND T.TS_NICKNAME=C.RECV_NICKNAME(+)
+			]]>
+		<include refid="criteria" />
+		<include refid="common.pagingPost" />
+	</select>
+
+	<select id="getTradeIngList" parameterType="hashmap"
+		resultType="hashmap">
+		<include refid="common.pagingPre" /> 
+	<![CDATA[
+	SELECT BB.*, ROW_NUMBER() OVER(ORDER BY BB.T_DATE DESC) RNUM, P.P_NICKNAME, P.P_SELLBUY
+	FROM (SELECT * FROM TRADE WHERE TB_NICKNAME = #{M_NICKNAME} OR TS_NICKNAME = #{M_NICKNAME}) BB, PRODUCT P
+	WHERE BB.TP_ID(+)=P.P_ID AND TB_STATUS = 1 AND TS_STATUS=0
+	]]>
+		<include refid="common.pagingPost" />
+	</select>
+
+	<select id="getProductTradeIngList" parameterType="hashmap"
+		resultType="hashmap">
+		SELECT * FROM (SELECT * FROM TRADE WHERE TB_NICKNAME =
+		#{M_NICKNAME} OR TS_NICKNAME = #{M_NICKNAME})
+		WHERE TP_ID = #{P_ID} AND
+		TB_STATUS = 1 AND TS_STATUS=0
+	</select>
+
+	<select id="getTradeCompleteList" parameterType="hashmap"
+		resultType="hashmap">
+		<include refid="common.pagingPre" />
+	<![CDATA[
+	SELECT BB.*, ROW_NUMBER() OVER(ORDER BY T_DATE DESC) RNUM, P.P_NICKNAME, P.P_SELLBUY
+	FROM (SELECT * FROM TRADE WHERE TB_NICKNAME = #{M_NICKNAME} OR TS_NICKNAME = #{M_NICKNAME}) BB, PRODUCT P
+	WHERE BB.TP_ID=P.P_ID AND TB_STATUS = 1 AND TS_STATUS = 1
+	]]>
+		<include refid="common.pagingPost" />
+	</select>
+
+	<delete id="adminTDelete" parameterType="hashmap">
+		<![CDATA[
+			DELETE FROM TRADE
+			WHERE
+				T_IDX = #{T_IDX}	
+		]]>
+	</delete>
+
+	<insert id="tradeWrite" parameterType="hashmap"
+		useGeneratedKeys="true" keyProperty="T_IDX">
+		<selectKey keyProperty="T_IDX" resultType="string"
+			order="BEFORE">
+			SELECT T_IDX_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		<![CDATA[
+			INSERT INTO TRADE
+			(
+		T_IDX,
+		TB_NICKNAME,
+		TS_NICKNAME,
+		T_DATE,
+		TP_ID,
+		TP_TITLE,
+		TP_PRICE,
+		TB_STATUS,
+		TS_STATUS
+			)
+			VALUES
+			(
+				#{T_IDX}, 
+				#{TB_NICKNAME}, 
+				#{TS_NICKNAME}, 				
+				SYSDATE, 
+				#{TP_ID}, 
+				#{TP_TITLE},
+				#{TP_PRICE},
+				1,
+				0
+			)
+		]]>
+	</insert>
+
+	<update id="tradeUpdate" parameterType="hashmap">
+		<![CDATA[
+			UPDATE TRADE 
+			SET
+				TS_STATUS = 1
+			WHERE
+				T_IDX = #{T_IDX}		
+		]]>
+	</update>
+
+	<delete id="tradeDelete" parameterType="hashmap">
+		<![CDATA[
+			DELETE FROM  TRADE
+			WHERE
+				T_IDX = #{T_IDX}
+		]]>
+	</delete>
+
+</mapper>

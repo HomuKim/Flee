@@ -1,0 +1,397 @@
+@import url(default.css);
+
+@import url(common.css);
+
+@import url(contents.css);
+
+@import url(sub.css);
+
+@import url(profile.css);
+
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+@import
+	url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css")
+	;
+
+@CHARSET "UTF-8";
+
+#chat {
+	margin-top: 212px;
+	min-height: 700px;
+}
+
+#chat .chatlist1 {
+	width: 40%;
+	min-height: 500px;
+	float: left;
+}
+
+#chat .chatlist1 .chattitle {
+	padding: 30px 0;
+	border-bottom: 1px solid #9d9d9d;
+	margin-bottom: 10px;
+}
+
+#chat .chatlist1 .chattitle h3 {
+	font-size: 19px;
+}
+
+#chat .chatlist1 ul.chatli {
+	height: 530px;
+	overflow: auto;
+	width: 100%;
+}
+
+#chat .chatlist1 ul.chatli li.chatname {
+	cursor: pointer;
+	height: 80px;
+	background: #f1f1f1;
+	border-bottom: 1px solid #eaeaea;
+	padding: 15px 0 0 20px;
+	font-size: 20px;
+	border-top: 2px solid #fff;
+}
+
+#chat .chatlist1 ul.chatli li.chatname .chatimg {
+	width: 11%;
+	float: left;
+	margin: 0;
+	padding-right: 20px;
+}
+
+#chat .chatlist1 ul.chatli li.chatname .chatimg img {
+	width: 66px;
+	border-radius: 100px;
+	height: 66px;
+}
+
+#chat .chatlist1 ul.chatli li.chatname .cname {
+	width: 71%;
+	float: left;
+	font-size: 19px;
+	padding: 1px 0 0 18px;
+}
+
+#chat .chatlist1 ul.chatli li.chatname span {
+	text-align: right;
+	font-size: 13px;
+	background: rgb(221, 122, 122);
+	padding: 2px 8px 2px 6px;
+	color: #fff;
+	border-radius: 100px;
+}
+
+#chat .chatlist1 ul.chatli li ul.chattext li {
+	float: left;
+	height: 27px;
+	padding-top: 10px;
+}
+
+#chat .chatlist1 ul.chatli li ul.chattext li:first-child {
+	padding-left: 18px;
+	width: 58%;
+	font-size: 17px;
+	overflow: hidden;
+}
+
+#chat .chatlist1 ul.chatli li ul.chattext li:last-child {
+	width: 20%;
+	font-size: 14px;
+	padding-left: 10px;
+}
+
+#chat .abchat {
+	float: left;
+	width: 50%;
+	min-height: 600px;
+	margin-left: 50px;
+}
+
+#chat .abchat .chatheader {
+	height: 92px;
+	/* padding: 0 20px; */
+	background: #67a1ea;
+	/* 	border-bottom:4px solid #478BE1; */
+}
+
+#chat .abchat .chatheader ul li {
+	float: left;
+	padding: 32px;
+
+}
+
+#chat .abchat .chatheader ul li:last-child {
+display:none;
+
+}
+#chat .abchat .chatheader ul li:first-child {
+	width: 48px;
+	padding: 33px 0px 19px 36px;
+	height: 48px;
+}
+
+#chat .abchat .chatheader ul li:after {
+	width: 40%;
+	padding: 33px 0px 19px 15px;
+}
+
+#chat .abchat .chatheader ul li.close {
+	display: none;
+}
+
+#chat .abchat .chatheader ul li img {
+	width: 100%;
+	border-radius: 100px;
+	height: 100%;
+}
+
+#chat .abchat .chatheader h4 {
+	font-size: 20px;
+	color: #fff;
+	font-weight: 400;
+}
+
+#chat .abchat .mslist .messages .sendnick {
+	width: 100%;
+	margin-left: 30px;
+	/* } */
+	/* #chatMessageArea .send2{height:1000px;} */
+}
+
+#messages {
+	height: 500px;
+}
+
+#chatArea {
+	height: 500px;
+	min-height: 500px;
+}
+
+#chatMessageArea {
+	height: 500px;
+	width: 100%;
+	min-height: 500px;
+	max-height: 500px;
+	overflow: auto;
+	padding-right: 13px;
+}
+
+#chatMessageArea .sendnick {
+	text-align: left;
+	margin: 20px 1px;
+	width: auto;
+	content: "";
+}
+
+#chatMessageArea .sendnick2 {
+	text-align: right;
+	color: #fff;
+	margin: 20px 1px;
+	width: auto;
+	content: "";
+	position: relative;
+}
+
+#chatMessageArea li p {
+	display: inline-block;
+	position: absolute;
+	top: 50%;
+	/* 	left: 36% */
+	float: right;
+	position: absolute;
+	color: #478BE1;
+	font-weight: 500;
+}
+
+#chatMessageArea .sendnick .sendinner {
+	max-width: 270px;
+	background: #eaeaea;
+	border-radius: 15px;
+	min-height: 30px;
+	padding: 15px 20px;
+	word-break: break-all;
+	display: inline-block;
+}
+
+#chatMessageArea .sendnick2 .sendinner {
+	max-width: 270px;
+	min-height: 30px;
+	background: #9dbde6;
+	border-radius: 15px;
+	padding: 5px 20px;
+	color: #FFF;
+	display: inline-block;
+	text-align: left;
+	word-break: break-all;
+	/* border: 3px solid #478BE1; */
+	margin-left: 18px;
+}
+
+#chatMessageArea .sendinner .box {
+	width: 200px;
+	height: 90px;
+	/* background: #fff; */
+	/* border: 1px solid #fff; */
+	border-radius: 5px;
+	text-align: center;
+	color: #fff;
+	padding: 20px;
+}
+
+#chatMessageArea .sendinner .box i {
+	width: 100%;
+	font-size: 50px;
+}
+
+#chatMessageArea .sendinner .box strong {
+	margin-top: 30px;
+	width: 98%;
+	height: 15px;
+	padding: 5px;
+}
+
+#chatMessageArea .sendinner a {
+	text-decoration: none;
+	font-size: 16px;
+	font-weight: 200;
+}
+
+/* #chatMessageArea .send2 ul { */
+/* 	position: relative */
+/* } */
+#chatMessageArea .send2 ul li p {
+	display: inline-block;
+	position: absolute;
+	top: 50%;
+	/* 	left: 36% */
+	float: right;
+	position: absolute;
+}
+
+#chatArea .chattext {
+	margin-bottom: 100px;
+}
+
+#chatArea .chattext .ctextarea {
+	width: 78%;
+	height: 57;
+	background: #f1f1f1;
+	/* border: 3px solid #a6a6a6; */
+	border-radius: 5px;
+	border-style: none;
+	resize: none;
+	vertical-align: middle;
+}
+
+#chatArea .chattext .cbtn {
+	height: 57px;
+	background: #478BE1;
+	border: 1px solid #478BE1;
+	border-radius: 5px;
+	color: #fff;
+	margin: 0 2px;
+	vertical-align: middle;
+	width: 20%;
+}
+
+/* 스크롤바 커스텀 */
+#chatMessageArea::-webkit-scrollbar {
+	background-color: #fff;
+	width: 1rem;
+}
+
+#chatMessageArea::-webkit-scrollbar-track {
+	background-color: #fff;
+}
+
+#chatMessageArea::-webkit-scrollbar-thumb {
+	height: 15%;
+	background-color: #babac0;
+	border-radius: 1rem;
+	border: 4px solid #fff;
+}
+/*  */
+.chatli::-webkit-scrollbar {
+	background-color: #fff;
+	width: 1rem;
+}
+
+.chatli::-webkit-scrollbar-track {
+	background-color: #fff;
+}
+
+.chatli::-webkit-scrollbar-thumb {
+	height: 15%;
+	background-color: #babac0;
+	border-radius: 1rem;
+	border: 4px solid #fff;
+}
+/* 모바일 */
+@media screen and (max-width:640px) {
+	#chat .chatlist1 {
+		width: 100%
+	}
+	#chat .chatlist1 ul.chatli li ul.chattext li:first-child {
+		width: 52%;
+	}
+	#chat .abchat {
+		display: none;
+	}
+	#chat .abchat.on {
+		display: flex;
+		top: 136px;
+		position: absolute;
+		background: #fff;
+		width: 100%;
+		margin: 0;
+	}
+	#chat .abchat.on .mslist {
+		width: 67%
+	}
+	#chat .abchat.on .chatheader {
+		height: 70px;
+		width: 103%;
+		/* padding: 0 20px; */
+		background: #67a1ea;
+		/* border-bottom: 4px solid #478BE1; */
+	}
+	#chat .abchat.on .chatheader ul li:first-child {
+		width: 48px;
+		padding: 10px 0px 19px 36px;
+		height: 42px;
+	}
+	#chat .abchat.on .chatheader ul li:nth-child(2) {
+		width: 30%;
+		padding: 15px
+	}
+	#chat .abchat.on .chatheader ul li:nth-child(3) {
+		display: block;
+		padding: 19px;
+		padding-left: 23%;
+		font-size: 16px;
+		font-weight: 300;
+	}
+	#chat .abchat.on .chatheader ul li:nth-child(3) a {
+		text-decoration: none;
+		color: #fff;
+	}
+	
+	
+}
+
+@media screen and (max-width:640px) {
+	#messages {
+		height: 500px;
+		width: 130%;
+	}
+}
+
+@media screen and (max-width:640px) {
+	#chatArea {
+		height: 500px;
+		min-height: 500px;
+		width: 103%;
+	}
+	#chatArea .chattext{width:105%}
+}

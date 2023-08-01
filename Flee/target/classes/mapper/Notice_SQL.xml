@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="notice">
+
+	<sql id="criteria">
+		<trim prefix="AND ( " suffix=" )" prefixOverrides="OR">
+			<foreach item='type' collection="typeArr">
+				<trim prefix="or">
+					<choose>
+						<when test="type=='T'.toString()">
+							N_TITLE like '%'||#{keyword}||'%'
+						</when>
+						<when test="type=='C'.toString()">
+							N_CONTENT like '%'||#{keyword}||'%'
+						</when>
+						<when test="type=='W'.toString()">
+							N_NICKNAME like '%'||#{keyword}||'%'
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
+
+
+	<select id="noticeList" parameterType="hashmap"
+		resultType="hashmap">
+		<include refid="common.pagingPre" /> 
+		<![CDATA[
+			SELECT  ROW_NUMBER() OVER(ORDER BY N_IDX desc) RNUM,
+						N_IDX,
+						N_TITLE,
+						N_CONTENT,
+						N_NICKNAME,
+						N_COUNT,
+						N_DATE,
+						N_TYPE 
+					FROM 
+						NOTICE
+					WHERE N_TYPE='N'	
+		]]>
+		<include refid="common.pagingPost" />
+	</select>
+
+	<select id="qnaList" parameterType="hashmap"
+		resultType="hashmap">
+		<include refid="common.pagingPre" /> 
+		<![CDATA[
+			SELECT  ROW_NUMBER() OVER(ORDER BY N_IDX desc) RNUM,
+						N_IDX,
+						N_TITLE,
+						N_CONTENT,
+						N_NICKNAME,
+						N_COUNT,
+						N_DATE,
+						N_TYPE 
+					FROM 
+						NOTICE
+					WHERE N_TYPE='Q'
+		]]>
+		<include refid="criteria" />
+		<include refid="common.pagingPost" />
+	</select>
+
+
+	<!-- 회원 질문 입력 -->
+	<insert id="qnaWrite" parameterType="hashmap"
+		useGeneratedKeys="true" keyProperty="N_IDX">
+		<selectKey keyProperty="N_IDX" resultType="string"
+			order="BEFORE">
+			SELECT N_IDX_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		<![CDATA[
+			INSERT INTO NOTICE
+			(
+		N_IDX,
+		N_TITLE,
+		N_DATE,
+		N_NICKNAME,
+		N_COUNT,
+		N_CONTENT,
+		N_TYPE
+			)
+			VALUES
+			(
+				#{N_IDX}, 
+				#{N_TITLE}, 
+				SYSDATE, 
+				#{N_NICKNAME}, 
+				0, 
+				#{N_CONTENT}, 
+				'Q'
+			)
+		]]>
+	</insert>
+
+
+	<select id="noticeDetail" parameterType="hashmap"
+		resultType="hashmap">
+		<![CDATA[
+			SELECT
+				N_IDX,
+				N_TITLE,
+				N_CONTENT,
+				N_NICKNAME,
+				N_COUNT,
+				N_DATE,
+				N_TYPE 
+			FROM
+				NOTICE
+			WHERE
+				N_IDX = #{N_IDX}		
+		]]>
+	</select>
+
+
+	<update id="qnaUpdate" parameterType="hashmap">
+		<![CDATA[
+			UPDATE NOTICE 
+			SET
+				N_TITLE = #{N_TITLE},				
+				N_CONTENT = #{N_CONTENT},
+				N_TYPE = #{N_TYPE}
+			WHERE
+				N_IDX = #{N_IDX}	
+		]]>
+	</update>
+
+
+	<delete id="qnaDelete" parameterType="hashmap">
+				<![CDATA[
+			DELETE FROM NOTICE
+			WHERE
+				N_IDX = #{N_IDX}	
+		]]>
+	</delete>
+
+	<select id="getTotalList" parameterType="hashmap"
+		resultType="int">
+		SELECT
+		COUNT(*)as TOTAL
+		FROM
+		NOTICE
+
+	</select>
+
+
+	<!-- 조회수 증가 -->
+	<update id="updateNcount" parameterType="hashmap">
+		<![CDATA[
+			UPDATE NOTICE 
+			SET
+				N_COUNT = NVL(N_COUNT, 0) + 1
+			WHERE
+				N_IDX = #{N_IDX}	
+		]]>
+	</update>
+
+
+
+</mapper>

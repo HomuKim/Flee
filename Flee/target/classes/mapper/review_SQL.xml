@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="review">
+
+	<!-- 관리자 후기 목록 검색 -->
+	<sql id="criteria">
+		<trim prefix="WHERE" prefixOverrides="OR">
+			<foreach item='type' collection="typeArr">
+				<trim prefix="or">
+					<choose>
+						<when test="type=='C'.toString()">
+							R_CONTENT like '%'||#{keyword}||'%'
+						</when>
+						<when test="type=='W'.toString()">
+							R_NICKNAME like '%'||#{keyword}||'%'
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
+
+
+
+
+	<!-- 내가 받은 후기 리스트 -->
+	<select id="selectReviewList" parameterType="hashmap"
+		resultType="hashmap">
+		<include refid="common.pagingPre" />
+		SELECT ROW_NUMBER() OVER(ORDER BY R_DATE) RNUM,
+		R_DATE,R_GRADE,R_CONTENT
+		FROM REVIEW
+		WHERE
+		RE_NICKNAME=#{M_NICKNAME}
+		<include refid="common.pagingPost" />
+	</select>
+	<!-- 내가 쓴 후기 리스트 -->
+	<select id="selectReview" parameterType="hashmap"
+		resultType="hashmap">
+		<include refid="common.pagingPre" />
+		SELECT ROW_NUMBER() OVER(ORDER BY R_DATE) RNUM, TO_CHAR(AVG(r.R_GRADE)
+		OVER(PARTITION BY R_NICKNAME),'FM0.0') AVG,
+		r.*, m.M_IMAGE,m.EMAIL
+		FROM
+		REVIEW r, MEMBER m
+		WHERE r.RE_NICKNAME = m.M_NICKNAME AND
+		r.R_NICKNAME=#{M_NICKNAME}
+		<include refid="common.pagingPost" />
+	</select>
+
+
+	<!--리뷰작성 -->
+	<insert id="writeReview" parameterType="hashmap"
+		useGeneratedKeys="true" keyProperty="R_IDX">
+		<selectKey keyProperty="R_IDX" resultType="string"
+			order="BEFORE">
+			select R_IDX_SEQ.NEXTVAL from dual
+		</selectKey>
+		INSERT
+		INTO REVIEW
+		VALUES(
+		#{R_IDX},
+		#{RE_NICKNAME},
+		#{RP_ID},
+		SYSDATE,
+		#{R_GRADE},
+		#{R_CONTENT},
+		#{R_NICKNAME}
+		)
+	</insert>
+	<!-- 리뷰 수정 -->
+	<update id="updateReview" parameterType="hashmap">
+      <![CDATA[
+         UPDATE 
+         REVIEW SET R_GRADE=#{R_GRADE}, R_CONTENT=#{R_CONTENT} 
+         WHERE R_IDX=#{R_IDX}
+      ]]>
+	</update>
+
+	<!-- 리뷰삭제 -->
+	<delete id="deleteReview" parameterType="int">
+	<![CDATA[
+		DELETE 
+	    FROM REVIEW
+	    WHERE R_IDX=#{R_IDX}
+	]]>
+	</delete>
+
+	<select id="getReview" parameterType="hashmap"
+		resultType="hashmap">
+	<![CDATA[
+		SELECT * 
+			FROM REVIEW
+			WHERE RE_NICKNAME=#{M_NICKNAME} AND R_NICKNAME=#{R_NICKNAME} AND RP_ID = #{TP_ID}
+	]]>
+	</select>
+</mapper>

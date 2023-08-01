@@ -1,0 +1,746 @@
+@import url(default.css);
+
+@import url(main.css);
+
+@import url(common.css);
+
+@import url(contents.css);
+
+@import url(sub.css);
+
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+.double .sidecontent .btn {
+	border: 1px solid #478BE1;
+	padding: 5px 7px;
+	font-size: 13px;
+	font-weight: 200;
+	border-radius: 15px;
+	background: #478BE1;
+	color: #fff
+}
+
+.double .sidecontent .mypagetext .mypage_textbox .trading .ytbtn {
+	border: 1px solid #478BE1;
+	padding: 5px 7px;
+	font-size: 13px;
+	font-weight: 200;
+	border-radius: 15px;
+	background: #478BE1;
+	color: #fff
+}
+
+.double .sidecontent .mypagetext .mypage_textbox .trading .ntbtn {
+	border: 1px solid #e14848;
+	padding: 5px 7px;
+	font-size: 13px;
+	font-weight: 200;
+	border-radius: 15px;
+	background: #e14848;
+	color: #fff
+}
+
+.double {
+	height: 1100px;
+}
+
+.double .sidenav {
+	width: 300px;
+	float: left;
+}
+
+.double .sidenav ul {
+	width: 300px;
+	margin: 70px 50px;
+}
+
+.double .sidenav ul>li {
+	width: 120px;
+	height: 10px;
+	padding: 10px 10px;
+}
+
+.double .sidenav ul>li.on a {
+	text-decoration: none;
+	color: #478BE1;
+	font-weight: 400;
+}
+
+.double .sidenav ul>li a {
+	color: black;
+	text-decoration: none;
+}
+
+.double .sidecontent {
+	width: 800px;
+	float: left;
+	border-left: 1px solid #aeaeae;
+	margin-top: 20px
+}
+
+.double .sidecontent .textline {
+	margin: 50px 0 100px 50px;
+}
+
+.double .sidecontent .textline h3 {
+	font-size: 19pt;
+}
+
+.double .sidecontent .textline .search {
+	text-align: center;
+	padding: 90px 0 50px 0;
+	border-bottom: 1px solid #000;
+}
+
+.double .sidecontent .textline .search img {
+	width: 20px;
+}
+
+.double .sidecontent .content {
+	padding-top: 100px;
+	margin-left: 50px;
+}
+
+.double .sidecontent .mypagetext {
+	width: 600px;
+	height: 400px;
+	margin-top: 50px;
+	margin-left: 50px;
+}
+
+.double .sidecontent .mypagetext::after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+.double .sidecontent .mypagetext ul.mtbtn {
+	margin-top: 30px;
+}
+
+.double .sidecontent .mypagetext .mtbtn li.mtli {
+	float: left;
+	height: 30px;
+	text-align: center;
+	cursor: pointer;
+	color: #fff;
+	border-radius: 100px;
+	background-color: #aeaeae;
+	width: 140px;
+	margin-right: 15px;
+	text-align: center;
+	padding: 10px;
+}
+
+.double .sidecontent .mypagetext .mtbtn .mtli.onon {
+	border-radius: 100px;
+	background-color: #487BE1;
+}
+
+.double .sidecontent .mypage_textbox {
+	padding: 100px 0;
+}
+
+.double .sidecontent .mypage_textbox div.mttab {
+	height: 300px;
+}
+
+/* .double .sidecontent .mypage_textbox>div>div { */
+/* 	width: 100%; */
+/* 	height: 100%; */
+/* 	display: none!importent; */
+/* } */
+.double .sidecontent .mypage_textbox>div>div.active {
+	display: block;
+}
+
+.double .sidecontent .mypage_textbox .mtview h3 {
+	font-size: 23px;
+	margin-bottom: 30px;
+}
+
+.double .sidecontent .mypage_textbox .mtview .board_list1 {
+	width: 800px;
+	table-layout: fixed
+}
+
+.double .sidecontent .mypage_textbox .mtview .board_list1 thead {
+	
+}
+
+.double .sidecontent .mypage_textbox .mtview .board_list1 thead tr {
+	
+}
+
+.double .sidecontent .mypage_textbox .mtview .board_list1 thead tr th {
+	font-size: 18px;
+	font-weight: 300;
+	height: 40px;
+	background: #eaeaea;
+	border-radius: 9px;
+}
+
+.double .sidecontent .mypage_textbox .mtview .board_list1 tbody {
+	text-align: center;
+}
+
+.double .sidecontent .mypage_textbox .mtview .board_list1 tbody tr td {
+	border-bottom: 1px solid #8d8d8d;
+	padding: 10px 10px;
+	font-size: 15px;
+	font-weight: 300;
+	overflow: hidden;
+}
+
+.double .sidecontent .mypage_textbox .mtview h3 {
+	font-size: 23px;
+	margin-bottom: 30px;
+}
+
+.double .sidecontent .mypage_textbox .mtview .board_list2 {
+	width: 800px;
+	table-layout: fixed
+}
+
+.double .sidecontent .mypage_textbox .mtview .board_list2 thead {
+	
+}
+
+.double .sidecontent .mypage_textbox .mtview .board_list2 thead tr {
+	
+}
+
+.double .sidecontent .mypage_textbox .mtview .board_list2 thead tr th {
+	font-size: 18px;
+	font-weight: 300;
+	height: 40px;
+	background: #eaeaea;
+	border-radius: 9px;
+}
+
+.double .sidecontent .mypage_textbox .mtview .board_list2 tbody {
+	text-align: center;
+}
+
+.double .sidecontent .mypage_textbox .mtview .board_list2 tbody tr td {
+	border-bottom: 1px solid #8d8d8d;
+	padding: 10px 10px;
+	font-size: 15px;
+	font-weight: 300;
+}
+
+.double .sidecontent .mypage_textbox .mtview h3 {
+	font-size: 23px;
+	margin-bottom: 30px;
+}
+
+.double .sidecontent .mypage_textbox .mtview .board_list3 {
+	width: 800px;
+}
+
+.double .sidecontent .mypage_textbox .mtview .board_list3 thead {
+	
+}
+
+.double .sidecontent .mypage_textbox .mtview .board_list3 thead tr {
+	
+}
+
+.double .sidecontent .mypage_textbox .mtview .board_list3 thead tr th {
+	font-size: 18px;
+	font-weight: 300;
+	height: 40px;
+	background: #eaeaea;
+	border-radius: 9px;
+}
+
+.double .sidecontent .mypage_textbox .mtview .board_list3 tbody {
+	text-align: center;
+}
+
+.double .sidecontent .mypage_textbox .mtview .board_list3 tbody tr td {
+	border-bottom: 1px solid #8d8d8d;
+	padding: 10px 10px;
+	font-size: 15px;
+	font-weight: 300;
+}
+
+/*마이페이지 double 모바일*/
+@media screen and (max-width:640px) {
+	.double .sidenav {
+		float: none;
+		width: 100%;
+	}
+	.double .sidenav ul {
+		width: 100%;
+		margin: 30px 10px;
+		height: 50px;
+	}
+	.double .sidenav ul>li {
+		height: auto;
+		padding: 10px 10px;
+		float: left;
+		border: 1px solid #478BE1;
+		width: 26.33%;
+		margin: 2px;
+		border-radius: 5px;
+		color: #478be1;
+		text-align: center;
+	}
+	.double .sidenav ul>li.on {
+		background: #478be1;
+	}
+	.double .sidenav ul>li.on a {
+		color: #fff;
+	}
+	.double .sidecontent {
+		border-left: none;
+		width: 100%;
+		margin-top: 20px;
+	}
+	.double .sidecontent .textline {
+		margin: 20px 15px;
+	}
+	.double .sidecontent .mypagetext {
+		width: 100%;
+		/* text-align: center; */
+		height: 400px;
+		/* margin-top: 50px; */
+		margin-left: 15px;
+	}
+	.double .sidecontent .mypage_textbox .mtview .board_list1 {
+		width: 100%
+	}
+	.double .sidecontent .mypage_textbox .mtview .board_list2 {
+		width: 100%
+	}
+	.double .sidecontent .mypage_textbox .mtview .board_list3 {
+		width: 100%
+	}
+	.double .sidecontent .mypage_textbox .mtview .board_list4 {
+		width: 100%
+	}
+	.double .sidecontent .mypagetext .mtbtn li.mtli {
+		width: 26.33%;
+		margin-right: 8px;
+	}
+}
+
+/*찜리스트*/
+.jjimlist {
+	margin-left: 30px;
+}
+/* .serpro .secone h2 { */
+/* 	font-size: 20px; */
+/* 	color: #2d2d2d; */
+/* 	font-weight: 500; */
+/* 	text-align: left; */
+/* 	margin: 30px 0; */
+/* } */
+.jjimlist ul li.jjimli {
+	height: 300px;
+	margin: 10px 0;
+	float: left;
+	width: 30%;
+	padding: 10px 50px;
+	position: relative;
+}
+
+.jjimlist ul.utext {
+	padding-left: 20px;
+}
+
+.jjimlist ul li a {
+	display: block;
+	color: #3d3d3d;
+	text-decoration: none;
+}
+
+.jjimlist ul li img {
+	border: 1px solid #e5e5e5;
+	width: 100%;
+	height: 170px;
+}
+
+.jjimlist ul li .setting {
+	text-align: left;
+	padding-left: 5%;
+	padding-bottom: 20px;
+	width: 80%;
+}
+
+.jjimlist ul li .setting h3 {
+	font-weight: 300;
+	margin: 10px 0;
+}
+
+.jjimlist ul li .setting span {
+	color: #e33e3e;
+	font-size: 15px;
+	margin-right: 6px;
+}
+
+.jjimlist ul li .setting span i {
+	font-size: 30px;
+}
+
+.jjimlist ul li .jimheart {
+	position: absolute;
+	top: 60%;
+	right: 17%
+}
+
+.jjimlist ul li .jimheart a {
+	font-size: 30px;
+}
+
+/*찜리스트 모바일*/
+@media screen and (max-width:640px) {
+	.jjimlist {
+		margin-left: 0
+	}
+	.jjimlist ul.utext {
+		padding-left: 0px;
+	}
+	.jjimlist ul li.jjimli {
+		margin: 10px 0;
+		width: 40%;
+		padding: 10px 20px;
+	}
+	.jjimlist ul li .jimheart {
+		top: 80%;
+	}
+}
+
+/*페이징 모음*/
+#paging {
+	width: 800px;
+	margin: 30px;
+	display: flex;
+	justify-content: center;
+}
+
+#paging .paging1 {
+	text-align: center;
+	margin: 0 auto;
+	width: auto;
+}
+
+#paging .paging1 ul li {
+	float: left;
+	padding: 1px 15px;
+}
+
+#paging .paging1 ul li.active {
+	float: left;
+	color: #487BE1;
+	padding: 1px 15px;
+	border-bottom: 3px solid #487BE1;
+	font-weight: 500;
+}
+
+#paging .paging1 ul li a {
+	text-decoration: none;
+	font-weight: 500;
+	color: #8d8d8d;
+}
+
+@media screen and (max-width:640px) {
+	#paging {
+		width: 100%;
+		margin: 10px 0;
+		justify-content: center;
+	}
+}
+
+#pagingr {
+	width: 800px;
+	margin: 30px;
+	display: flex;
+	justify-content: center;
+}
+
+#pagingr .paging1 {
+	text-align: center;
+	margin: 0 auto;
+	width: auto;
+}
+
+#pagingr .paging1 ul li {
+	float: left;
+	padding: 1px 15px;
+}
+
+#pagingr .paging1 ul li.active {
+	float: left;
+	color: #487BE1;
+	padding: 1px 15px;
+	border-bottom: 3px solid #487BE1;
+	font-weight: 500;
+}
+
+#pagingr .paging1 ul li a {
+	text-decoration: none;
+	font-weight: 500;
+	color: #8d8d8d;
+}
+
+@media screen and (max-width:640px) {
+	#pagingr {
+		width: 100%;
+		margin: 10px 0;
+		justify-content: center;
+	}
+}
+
+#pagingc {
+	width: 800px;
+	margin: 30px;
+	display: flex;
+	justify-content: center;
+}
+
+#pagingc .paging1 {
+	text-align: center;
+	margin: 0 auto;
+	width: auto;
+}
+
+#pagingc .paging1 ul li {
+	float: left;
+	padding: 1px 15px;
+}
+
+#pagingc .paging1 ul li.active {
+	float: left;
+	color: #487BE1;
+	padding: 1px 15px;
+	border-bottom: 3px solid #487BE1;
+	font-weight: 500;
+}
+
+#pagingc .paging1 ul li a {
+	text-decoration: none;
+	font-weight: 500;
+	color: #8d8d8d;
+}
+
+}
+@media screen and (max-width:640px) {
+	#pagingc {
+		width: 100%;
+		margin: 10px 0;
+		justify-content: center;
+	}
+}
+
+#pagingq {
+	width: 800px;
+	margin: 30px;
+	display: flex;
+	justify-content: center;
+}
+
+#pagingq .paging1 {
+	text-align: center;
+	margin: 0 auto;
+	width: auto;
+}
+
+#pagingq .paging1 ul li {
+	float: left;
+	padding: 1px 15px;
+}
+
+#pagingq .paging1 ul li.active {
+	float: left;
+	color: #487BE1;
+	padding: 1px 15px;
+	border-bottom: 3px solid #487BE1;
+	font-weight: 500;
+}
+
+#pagingq .paging1 ul li a {
+	text-decoration: none;
+	font-weight: 500;
+	color: #8d8d8d;
+}
+
+@media screen and (max-width:640px) {
+	#pagingq {
+		width: 100%;
+		margin: 10px 0;
+		justify-content: center;
+	}
+}
+/*리뷰*/
+#modal {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 100;
+	display: none;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+#modal .modal-window {
+	background: #FFF;
+	backdrop-filter: blur(13.5px);
+	border-radius: 10px;
+	border: 1px solid #9d9d9d;
+	width: 500px;
+	height: 510px;
+	position: relative;
+	top: 100px;
+	padding: 10px;
+	text-align: left;
+}
+
+#modal .title {
+	margin-top: 70px;
+	padding-left: 10px;
+	display: inline;
+	color: #5d5d5d;
+}
+
+#modal .title p {
+	padding-left: 10px;
+	font-size: 15px;
+	padding-bottom: 10px;
+}
+
+#modal .title .rvwho {
+	height: 80px;
+	margin-top: 20px;
+	padding-left: 22px;
+}
+
+#modal .title .rvwho h3 {
+	text-align: left;
+	padding-left: 10px;
+}
+
+#modal .title .rvwho span {
+	padding-top: 15px;
+	text-align: left;
+	padding-left: 10px;
+	font-size: 18px;
+	font-weight: 400;
+}
+
+#modal .close-area {
+	display: inline;
+	float: right;
+	padding-right: 10px;
+	cursor: pointer;
+	color: #2d2d2d;
+	font-size: 19px;
+}
+
+#modal .content {
+	padding: 0px 10px;
+	color: white;
+	text-align: center;
+}
+
+#modal .content ul {
+	text-align: center;
+}
+
+#modal .content ul li.off {
+	width: 80%;
+	height: 20px;
+	padding: 5px 10px;
+	border-radius: 100px;
+	border: 1px solid #a7b5d8;
+	margin: 20px;
+}
+
+#modal .content ul li.on {
+	width: 80%;
+	height: 20px;
+	padding: 5px 10px;
+	border-radius: 100px;
+	border: 1px solid #487BE1;
+	background: #487BE1;
+	margin: 20px;
+	color: #fff
+}
+
+#modal .content ul li.on a {
+	color: #fff
+}
+
+#modal .content ul li a {
+	text-decoration: none;
+	color: #3d3d3d;
+}
+
+#modal .content p {
+	color: #3d3d3d;
+	font-size: 15px;
+}
+
+#modal .modal-window .content .stardr {
+	margin: 0 auto;
+	height: 90px;
+	padding: 0 24px;
+}
+
+#modal .modal-window .content .stardr p {
+	width: 100px;
+	margin: 0 auto;
+	padding: 15px 16px 1px 0;
+}
+
+#modal .modal-window .content .stardr .star {
+	position: relative;
+	font-size: 2rem;
+	color: #ddd;
+}
+
+#modal .modal-window .content .stardr .star input {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	opacity: 0;
+	cursor: pointer;
+}
+
+#modal .modal-window .content .stardr .star span {
+	width: 0;
+	position: absolute;
+	left: 0;
+	color: #ffd500;
+	overflow: hidden;
+	pointer-events: none;
+}
+
+#modal .modal-window .content .reviewtext {
+	width: 90%;
+	height: 200px;
+	margin: 0 auto;
+	padding-bottom: 20px;
+}
+
+#modal .modal-window .modalbtn {
+	margin: 0 auto;
+	display: block;
+	width: 120px;
+	height: 30px;
+	border: 1px solid #487BE1;
+	padding: 0 15px;
+	border-radius: 100px;
+	background: #487BE1;
+	color: #fff;
+	margin-top: 10px;
+}
+}
+}
+}

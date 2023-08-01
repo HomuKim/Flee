@@ -1,0 +1,15 @@
+/* 태그의 기본 여백 삭제 */
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+body,h1,h2,h3,h4,h5,h6,p,ul,ol,li,button,address{margin:0;padding:0;}
+a img{border:0;}/* a태그에 감싸인 이미지의 파란 border 삭제 */
+em,address{font-style:normal;}/* em의 글자 기울임 빼기 */
+textarea{font-family: 'Noto Sans KR', sans-serif;font-size:15px;line-height:1.4;font-weight:300;color:#3d3d3d;letter-spacing:-1px;}
+
+
+ul,li{list-style:none;}
+
+button{border:0;background:none;cursor:pointer;}
+input{border-style:solid}
+.clearfix:after{display:block;clear:both;content:".";visibility:hidden;height:0;}
+.clearfix{display:block;}
+

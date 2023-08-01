@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="chat">
+
+	<select id="getChatRoom" parameterType="hashmap"
+		resultType="hashmap">
+	<![CDATA[
+		SELECT * 
+			FROM CHATROOM
+			WHERE CROOM_IDX=#{CROOM_IDX}
+	]]>
+	</select>
+
+	<select id="getMessageList" parameterType="int"
+		resultType="hashmap">
+	<![CDATA[
+	SELECT * 
+	FROM MESSAGE
+	WHERE CROOM_IDX=#{CROOM_IDX} ORDER BY MES_DATE
+	]]>
+	</select>
+
+	<select id="getChatList" parameterType="hashmap"
+		resultType="hashmap">
+	<![CDATA[
+	SELECT ROW_NUMBER() OVER(ORDER BY CROOM_DATE DESC) RNUM, C.* 
+	FROM CHATROOM C
+	WHERE SEND_NICKNAME=#{M_NICKNAME} OR RECV_NICKNAME=#{M_NICKNAME}
+	]]>
+	</select>
+
+	<insert id="createChatRoom" parameterType="hashmap"
+		useGeneratedKeys="true" keyProperty="CROOM_IDX">
+		<selectKey keyProperty="CROOM_IDX" resultType="string"
+			order="BEFORE">
+			select CROOM_IDX_SEQ.NEXTVAL from dual
+		</selectKey>
+	<![CDATA[
+		INSERT 
+		INTO CHATROOM
+			(SEND_NICKNAME, RECV_NICKNAME, CROOM_IDX, CROOM_DATE, CP_ID, CROOM_DEL)
+			VALUES(
+				#{SEND_NICKNAME}, 
+				#{RECV_NICKNAME}, 
+				#{CROOM_IDX}, 
+				SYSDATE, 
+				#{CP_ID},
+				'NN'
+				)
+	]]>
+	</insert>
+
+	<insert id="createMessage" parameterType="hashmap"
+		useGeneratedKeys="true" keyProperty="MES_IDX">
+		<selectKey keyProperty="MES_IDX" resultType="string"
+			order="BEFORE">
+			select MES_IDX_SEQ.NEXTVAL from dual
+		</selectKey>
+	<![CDATA[
+		INSERT 
+		INTO MESSAGE
+			(SEND_NICKNAME, RECV_NICKNAME, MES_CONTENT, MES_DATE, CROOM_IDX, MES_IDX, READCHECK)
+			VALUES(
+				#{SEND_NICKNAME}, 
+				#{RECV_NICKNAME}, 
+				#{MES_CONTENT},
+				SYSDATE,
+				#{CROOM_IDX},
+				#{MES_IDX},
+				1
+				)
+	]]>
+	</insert>
+
+	<select id="getLastMessage" parameterType="int"
+		resultType="hashmap">
+	<![CDATA[
+		SELECT *
+		FROM (
+			SELECT * FROM MESSAGE
+			WHERE CROOM_IDX=#{CROOM_IDX} ORDER BY MES_DATE DESC)
+		WHERE ROWNUM<=1
+	]]>
+	</select>
+
+	<update id="updateReadcheck" parameterType="hashmap">
+    <![CDATA[
+		UPDATE MESSAGE 
+		SET READCHECK=0 
+		WHERE RECV_NICKNAME=#{M_NICKNAME} AND CROOM_IDX = #{CROOM_IDX}
+	]]>
+	</update>
+
+	<select id="getReadcheck" parameterType="string"
+		resultType="int">
+	<![CDATA[
+		SELECT COUNT(READCHECK) 
+		FROM MESSAGE 
+		WHERE RECV_NICKNAME=#{nickname} AND READCHECK=1
+	]]>
+	</select>
+
+</mapper>
